@@ -5,8 +5,8 @@ import javax.inject.Singleton
 
 @Singleton
 class MainRepository @Inject constructor(
-    private val remoteData : MainRemoteData
+    private val remoteData : HabrRemoteData
 ) {
 
-    suspend fun getMain(page : Int) = remoteData.getMain(page)
+    suspend fun getMain(page : Int) = remoteData.getNewArticles(page)
 }

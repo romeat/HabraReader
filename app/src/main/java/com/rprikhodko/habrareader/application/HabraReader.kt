@@ -1,4 +1,4 @@
-package com.rprikhodko.habrareader
+package com.rprikhodko.habrareader.application
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
