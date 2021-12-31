@@ -2,18 +2,15 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/home">
+    android:id="@+id/home"
+    app:startDestination="@id/navigation_home">
 
-    <include app:graph="@navigation/home"/>
-    <include app:graph="@navigation/notifications"/>
-    <include app:graph="@navigation/dashboard"/>
-    <!--
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.rprikhodko.habrareader.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
+
         <action
             android:id="@+id/action_navigation_home_to_postFragment"
             app:destination="@id/postFragment" />
@@ -23,7 +20,9 @@
         <action
             android:id="@+id/action_navigation_home_to_profileFragment"
             app:destination="@id/profileFragment" />
+
     </fragment>
+
 
     <fragment
         android:id="@+id/postFragment"
@@ -36,9 +35,7 @@
             android:id="@+id/action_postFragment_to_commentsFragment"
             app:destination="@id/commentsFragment" />
     </fragment>
-
     <action android:id="@+id/action_global_postFragment" app:destination="@id/postFragment" />
-
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.rprikhodko.habrareader.ui.profile.ProfileFragment"
@@ -57,6 +54,5 @@
             app:destination="@id/profileFragment" />
     </fragment>
     <action android:id="@+id/action_global_commentsFragment" app:destination="@id/commentsFragment" />
--->
 
 </navigation>
