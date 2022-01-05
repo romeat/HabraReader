@@ -24,8 +24,9 @@ class ArticlesFragment : Fragment() {
     ): View {
         _binding = FragmentArticlesBinding.inflate(inflater, container, false)
 
-        binding.toArticle.setOnClickListener{ findNavController().navigate(R.id.action_navigation_home_to_postFragment) }
-        binding.toComments.setOnClickListener { findNavController().navigate(R.id.action_navigation_home_to_commentsFragment) }
+        binding.toArticle.setOnClickListener{ findNavController().navigate(R.id.article) }
+        binding.toComments.setOnClickListener { findNavController().navigate(R.id.comment) }
+        binding.toProfile.setOnClickListener { findNavController().navigate(R.id.action_global_profileFragment) }
 
         return binding.root
     }

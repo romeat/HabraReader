@@ -5,9 +5,13 @@
     android:id="@+id/dashboard"
     app:startDestination="@id/navigation_dashboard">
 
+    <include app:graph="@navigation/post"/>
+    <include app:graph="@navigation/comment"/>
+    <include app:graph="@navigation/profile"/>
+
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.rprikhodko.habrareader.ui.dashboard.DashboardFragment"
+        android:name="com.rprikhodko.habrareader.ui.dashboard.CategoriesFragment"
         android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_categories" />
 </navigation>

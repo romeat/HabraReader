@@ -8,13 +8,14 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.rprikhodko.habrareader.R
-import com.rprikhodko.habrareader.databinding.FragmentDashboardBinding
+import com.rprikhodko.habrareader.databinding.FragmentCategoriesBinding
 
-class DashboardFragment : Fragment() {
+class CategoriesFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
-    private var _binding: FragmentDashboardBinding? = null
+    private lateinit var categoriesViewModel: CategoriesViewModel
+    private var _binding: FragmentCategoriesBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -25,16 +26,19 @@ class DashboardFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-                ViewModelProvider(this).get(DashboardViewModel::class.java)
+        categoriesViewModel =
+                ViewModelProvider(this).get(CategoriesViewModel::class.java)
 
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        _binding = FragmentCategoriesBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
+        categoriesViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+
+        binding.toPost.setOnClickListener { findNavController().navigate(R.id.article) }
+        binding.toComments.setOnClickListener { findNavController().navigate(R.id.comment) }
         return root
     }
 

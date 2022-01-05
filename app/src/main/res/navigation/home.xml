@@ -5,54 +5,14 @@
     android:id="@+id/home"
     app:startDestination="@id/navigation_home">
 
+    <include app:graph="@navigation/post"/>
+    <include app:graph="@navigation/comment"/>
+    <include app:graph="@navigation/profile"/>
+
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.rprikhodko.habrareader.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
-
-        <action
-            android:id="@+id/action_navigation_home_to_postFragment"
-            app:destination="@id/postFragment" />
-        <action
-            android:id="@+id/action_navigation_home_to_commentsFragment"
-            app:destination="@id/commentsFragment" />
-        <action
-            android:id="@+id/action_navigation_home_to_profileFragment"
-            app:destination="@id/profileFragment" />
-
     </fragment>
-
-
-    <fragment
-        android:id="@+id/postFragment"
-        android:name="com.rprikhodko.habrareader.ui.post.detail.PostFragment"
-        android:label="PostFragment" >
-        <action
-            android:id="@+id/action_postFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-        <action
-            android:id="@+id/action_postFragment_to_commentsFragment"
-            app:destination="@id/commentsFragment" />
-    </fragment>
-    <action android:id="@+id/action_global_postFragment" app:destination="@id/postFragment" />
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.rprikhodko.habrareader.ui.profile.ProfileFragment"
-        android:label="ProfileFragment" >
-        <action
-            android:id="@+id/action_profileFragment_to_postFragment"
-            app:destination="@id/postFragment" />
-    </fragment>
-    <action android:id="@+id/action_global_profileFragment" app:destination="@id/profileFragment" />
-    <fragment
-        android:id="@+id/commentsFragment"
-        android:name="com.rprikhodko.habrareader.ui.comment.CommentsFragment"
-        android:label="CommentsFragment" >
-        <action
-            android:id="@+id/action_commentsFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
-    </fragment>
-    <action android:id="@+id/action_global_commentsFragment" app:destination="@id/commentsFragment" />
-
-</navigation>
+ </navigation>

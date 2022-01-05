@@ -8,12 +8,12 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.rprikhodko.habrareader.databinding.FragmentNotificationsBinding
+import com.rprikhodko.habrareader.databinding.FragmentFavouritesBinding
 
 class FavouritesFragment : Fragment() {
 
-    private lateinit var notificationsViewModel: FavouritesViewModel
-    private var _binding: FragmentNotificationsBinding? = null
+    private lateinit var favouritesViewModel: FavouritesViewModel
+    private var _binding: FragmentFavouritesBinding? = null
       private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -21,10 +21,10 @@ class FavouritesFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        notificationsViewModel =
+        favouritesViewModel =
                 ViewModelProvider(this).get(FavouritesViewModel::class.java)
 
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentFavouritesBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         return root

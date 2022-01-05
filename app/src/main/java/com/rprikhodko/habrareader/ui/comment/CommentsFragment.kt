@@ -20,7 +20,7 @@ class CommentsFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCommentsBinding.inflate(inflater, container, false)
-        binding.toProfile.setOnClickListener{ findNavController().navigate(R.id.action_commentsFragment_to_profileFragment) }
+        binding.toProfile.setOnClickListener{ findNavController().navigate(R.id.profile) }
         return binding.root
     }
 

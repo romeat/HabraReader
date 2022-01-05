@@ -19,7 +19,7 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
-        binding.toArticle.setOnClickListener{ findNavController().navigate(R.id.action_profileFragment_to_postFragment) }
+        binding.toArticle.setOnClickListener{ findNavController().navigate(R.id.article) }
         return binding.root
     }
 

@@ -20,8 +20,8 @@ class PostFragment: Fragment() {
     ): View {
         _binding = FragmentPostBinding.inflate(inflater, container, false)
 
-        binding.toProfile.setOnClickListener{ findNavController().navigate(R.id.action_postFragment_to_profileFragment)}
-        binding.toComments.setOnClickListener{ findNavController().navigate(R.id.action_postFragment_to_commentsFragment)}
+        binding.toProfile.setOnClickListener{ findNavController().navigate(R.id.profile)}
+        binding.toComments.setOnClickListener{ findNavController().navigate(R.id.comment)}
 
 
         return binding.root

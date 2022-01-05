@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/article"
+    app:startDestination="@id/postFragment2">
+
+    <fragment
+        android:id="@+id/postFragment2"
+        android:name="com.rprikhodko.habrareader.ui.post.detail.PostFragment"
+        android:label="PostFragment" />
+    <action android:id="@+id/action_global_postFragment2" app:destination="@id/postFragment2" />
+</navigation>
