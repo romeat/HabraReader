@@ -19,7 +19,7 @@ class HomeViewModel @Inject constructor(val repo: MainRepository) : ViewModel() 
 
     fun getMainPage() {
         job = CoroutineScope(Dispatchers.IO).launch {
-            val response = repo.getMain(1)
+            val response = repo.getArticles(1)
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
                     mainpage.postValue(response.body())

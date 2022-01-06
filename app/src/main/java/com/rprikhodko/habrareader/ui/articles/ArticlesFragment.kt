@@ -7,9 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.rprikhodko.habrareader.PostAdapter
 import com.rprikhodko.habrareader.R
 import com.rprikhodko.habrareader.databinding.FragmentArticlesBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ArticlesFragment : Fragment() {
 
     private val articlesViewModel by viewModels<ArticlesViewModel>()
@@ -24,9 +27,17 @@ class ArticlesFragment : Fragment() {
     ): View {
         _binding = FragmentArticlesBinding.inflate(inflater, container, false)
 
+        val adapter = PostAdapter()
+        binding.postList.adapter = adapter
+        articlesViewModel.data.observe(viewLifecycleOwner) {
+            posts -> adapter.submitList(posts)
+        }
+        /*
         binding.toArticle.setOnClickListener{ findNavController().navigate(R.id.article) }
         binding.toComments.setOnClickListener { findNavController().navigate(R.id.comment) }
         binding.toProfile.setOnClickListener { findNavController().navigate(R.id.action_global_profileFragment) }
+
+         */
 
         return binding.root
     }

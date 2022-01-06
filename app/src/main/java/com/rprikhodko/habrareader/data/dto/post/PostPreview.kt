@@ -9,5 +9,5 @@ data class PostPreview(
     @SerializedName("titleHtml") val title: String,
     val postType: String,
     val author: UserSmallInfo,
-    val stats: PostStatistics,
+    @SerializedName("statistics") val stats: PostStatistics,
 )

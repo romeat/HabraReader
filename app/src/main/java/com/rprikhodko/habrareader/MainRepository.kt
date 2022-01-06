@@ -8,5 +8,7 @@ class MainRepository @Inject constructor(
     private val remoteData : HabrRemoteData
 ) {
 
-    suspend fun getMain(page : Int) = remoteData.getNewArticles(page)
+    suspend fun getArticles(page : Int) = remoteData.getNewArticles(page)
+
+    suspend fun getNews(page: Int) = remoteData.getNews(page)
 }
