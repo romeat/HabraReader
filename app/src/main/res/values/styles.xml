@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="RadioButtonStyle" parent="@android:style/Widget.CompoundButton">
+        <item name="android:background">@drawable/radio_flat_selector</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:button">@null</item>
+        <item name="android:textColor">@color/radio_flat_text_selector</item>
+        <item name="android:paddingLeft">@dimen/radio_button_padding_horizontal</item>
+        <item name="android:paddingRight">@dimen/radio_button_padding_horizontal</item>
+        <item name="android:layout_marginLeft">@dimen/radio_button_margin_horizontal</item>
+        <item name="android:layout_marginRight">@dimen/radio_button_margin_horizontal</item>
+        <item name="android:layout_marginTop">@dimen/radio_button_margin_horizontal</item>
+        <item name="android:layout_marginBottom">@dimen/radio_button_margin_horizontal</item>
+    </style>
+
+    <style name="RadioButtonExtraPaddingStyle" parent="RadioButtonStyle">
+        <item name="android:paddingLeft">@dimen/radio_button_padding_horizontal_extra</item>
+        <item name="android:paddingRight">@dimen/radio_button_padding_horizontal_extra</item>
+    </style>
+
+    <style name="ElevatedLayout">
+        <item name="android:elevation">4dp</item>
+        <item name="android:background">@color/colorWhite</item>
+    </style>
+    <style name="ToggleButtonStyle">
+        <item name="android:disabledAlpha">?android:attr/disabledAlpha</item>
+        <item name="android:background">@null</item>
+        <item name="android:drawableEnd">@drawable/toggle_selector</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:paddingLeft">@dimen/radio_button_padding_horizontal</item>
+        <item name="android:paddingRight">@dimen/radio_button_padding_horizontal</item>
+        <item name="android:textOff">""</item>
+        <item name="android:textOn">""</item>
+    </style>
+</resources>

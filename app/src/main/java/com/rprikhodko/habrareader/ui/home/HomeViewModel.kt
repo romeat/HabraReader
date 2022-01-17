@@ -2,14 +2,14 @@ package com.rprikhodko.habrareader.ui.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.rprikhodko.habrareader.MainRepository
+import com.rprikhodko.habrareader.PostsRepository
 import com.rprikhodko.habrareader.data.dto.post.PostsPage
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(val repo: MainRepository) : ViewModel() {
+class HomeViewModel @Inject constructor(val repo: PostsRepository) : ViewModel() {
 
     val errorMessage = MutableLiveData<String>()
     val mainpage = MutableLiveData<PostsPage>()

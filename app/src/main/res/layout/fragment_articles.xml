@@ -5,50 +5,136 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ToggleButton style="@style/ToggleButtonStyle"
+        android:id="@+id/expandFiltersButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/showFirstGroup"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="showFirstText,showFirstSelector" />
+
+    <TextView style="@style/ElevatedLayout"
+        android:id="@+id/showFirstText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Сначала показывать"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/expandFiltersButton" />
+
+    <RadioGroup style="@style/ElevatedLayout"
+        android:id="@+id/showFirstSelector"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/showFirstText">
+
+        <androidx.appcompat.widget.AppCompatRadioButton style="@style/RadioButtonStyle"
+            android:id="@+id/newPostsRadioButton"
+            android:checked="true"
+            android:text="Новые"/>
+        <androidx.appcompat.widget.AppCompatRadioButton style="@style/RadioButtonStyle"
+            android:id="@+id/bestPostsRadioButton"
+            android:text="Лучшие" />
+    </RadioGroup>
+
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/periodGroup"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="periodSelector, periodSelectorText"/>
+
+    <TextView style="@style/ElevatedLayout"
+        android:id="@+id/periodSelectorText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Период"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/showFirstSelector" />
+
+    <RadioGroup style="@style/ElevatedLayout"
+        android:id="@+id/periodSelector"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/periodSelectorText">
+
+        <androidx.appcompat.widget.AppCompatRadioButton style="@style/RadioButtonStyle"
+            android:id="@+id/dailyRadioButton"
+            android:checked="true"
+            android:text="Сутки" />
+        <androidx.appcompat.widget.AppCompatRadioButton style="@style/RadioButtonStyle"
+            android:id="@+id/weeklyRadioButton"
+            android:text="Неделя"/>
+        <androidx.appcompat.widget.AppCompatRadioButton style="@style/RadioButtonStyle"
+            android:id="@+id/monthlyRadioButton"
+            android:text="Месяц" />
+        <androidx.appcompat.widget.AppCompatRadioButton style="@style/RadioButtonStyle"
+            android:id="@+id/yearlyRadioButton"
+            android:text="Год" />
+        <androidx.appcompat.widget.AppCompatRadioButton style="@style/RadioButtonStyle"
+            android:id="@+id/allTimeRadioButton"
+            android:text="Всё время"/>
+    </RadioGroup>
+
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/ratingGroup"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="ratingSelector, ratingSelectorText"/>
+
+    <TextView style="@style/ElevatedLayout"
+        android:id="@+id/ratingSelectorText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Порог рейтинга"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/showFirstSelector" />
+
+    <RadioGroup style="@style/ElevatedLayout"
+        android:id="@+id/ratingSelector"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratingSelectorText">
+        <androidx.appcompat.widget.AppCompatRadioButton style="@style/RadioButtonExtraPaddingStyle"
+            android:id="@+id/anyRatingRadioButton"
+            android:checked="true"
+            android:text="Все" />
+        <androidx.appcompat.widget.AppCompatRadioButton style="@style/RadioButtonExtraPaddingStyle"
+            android:id="@+id/zeroPlusRadioButton"
+            android:text="0+"/>
+        <androidx.appcompat.widget.AppCompatRadioButton style="@style/RadioButtonExtraPaddingStyle"
+            android:id="@+id/tenPlusRadioButton"
+            android:text="10+" />
+        <androidx.appcompat.widget.AppCompatRadioButton style="@style/RadioButtonExtraPaddingStyle"
+            android:id="@+id/twentyFivePlusRadioButton"
+            android:text="25+" />
+    </RadioGroup>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/post_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constrainedHeight="true"
         android:clipToPadding="false"
         app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-        tools:listitem="@layout/post_item"/>
-    <!--
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="СТАТЬИ"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/expandFiltersButton"
+        app:layout_constraintVertical_bias="1.0"
+        tools:listitem="@layout/post_item" />
 
-    <Button
-        android:id="@+id/toArticle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="к статье"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/toProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="к профилю"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toArticle" />
-
-    <Button
-        android:id="@+id/toComments"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="к комментам"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toProfile" />
--->
 </androidx.constraintlayout.widget.ConstraintLayout>

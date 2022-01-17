@@ -3,10 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.346875" />
+        <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/drawable/arrow_down_16.xml" value="0.5703125" />
+        <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/drawable/ic_baseline_arrow_24.xml" value="0.5703125" />
         <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.5703125" />
         <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.5703125" />
+        <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/drawable/ic_launcher_background.xml" value="0.346875" />
+        <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.346875" />
+        <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/drawable/no_button.xml" value="0.346875" />
+        <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/drawable/radio_flat_regular.xml" value="0.5703125" />
+        <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/drawable/radio_flat_selected.xml" value="0.5703125" />
+        <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/drawable/radio_flat_selector.xml" value="0.5703125" />
+        <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/drawable/radio_flat_text_selector.xml" value="0.5703125" />
+        <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/drawable/toggle_selector.xml" value="0.5703125" />
         <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/layout/activity_main.xml" value="0.2695035460992908" />
-        <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/layout/fragment_articles.xml" value="0.3307291666666667" />
+        <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/layout/filters_layout.xml" value="0.3307291666666667" />
+        <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/layout/fragment_articles.xml" value="0.5" />
+        <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/layout/fragment_categories.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/layout/fragment_comments.xml" value="0.3307291666666667" />
         <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/layout/fragment_dashboard.xml" value="0.2921195652173913" />
         <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/layout/fragment_home.xml" value="0.28442028985507245" />
@@ -14,7 +27,9 @@
         <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/layout/fragment_notifications.xml" value="0.2921195652173913" />
         <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/layout/fragment_post.xml" value="0.33" />
         <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/layout/fragment_profile.xml" value="0.3307291666666667" />
+        <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/layout/period_group_layout.xml" value="0.3307291666666667" />
         <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/layout/post_item.xml" value="0.5" />
+        <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/layout/rating_group_layout.xml" value="0.3307291666666667" />
         <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/menu/bottom_nav_menu.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.5703125" />
         <entry key="..\:/Users/Roma/StudioProjects/HabraReader/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.5703125" />
@@ -27,5 +42,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.5" />
+      </ProjectState>
+    </option>
   </component>
 </project>
