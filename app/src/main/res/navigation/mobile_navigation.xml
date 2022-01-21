@@ -6,6 +6,6 @@
     app:startDestination="@+id/home">
 
     <include app:graph="@navigation/home"/>
-    <include app:graph="@navigation/notifications"/>
     <include app:graph="@navigation/categories"/>
+    <include app:graph="@navigation/favourites"/>
 </navigation>

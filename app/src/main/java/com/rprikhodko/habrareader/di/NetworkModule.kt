@@ -1,8 +1,7 @@
 package com.rprikhodko.habrareader.di
 
-import com.google.gson.GsonBuilder
-import com.rprikhodko.habrareader.HabrRemoteData
-import com.rprikhodko.habrareader.MainService
+import com.rprikhodko.habrareader.network.HabrRemoteData
+import com.rprikhodko.habrareader.network.MainService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

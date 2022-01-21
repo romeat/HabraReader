@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.rprikhodko.habrareader.ui.profile.ProfileFragment"
+        android:name="com.rprikhodko.habrareader.author.ui.ProfileFragment"
         android:label="ProfileFragment" /><action android:id="@+id/action_global_profileFragment" app:destination="@id/profileFragment"/>
 </navigation>

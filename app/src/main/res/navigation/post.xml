@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/postFragment2"
-        android:name="com.rprikhodko.habrareader.ui.post.detail.PostFragment"
+        android:name="com.rprikhodko.habrareader.post.ui.PostFragment"
         android:label="PostFragment" />
     <action android:id="@+id/action_global_postFragment2" app:destination="@id/postFragment2" />
 </navigation>

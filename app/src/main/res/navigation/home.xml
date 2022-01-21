@@ -11,7 +11,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.rprikhodko.habrareader.ui.home.HomeFragment"
+        android:name="com.rprikhodko.habrareader.home.ui.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
     </fragment>

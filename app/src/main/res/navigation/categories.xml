@@ -2,16 +2,16 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/dashboard"
-    app:startDestination="@id/navigation_dashboard">
+    android:id="@+id/categories"
+    app:startDestination="@id/navigation_categories">
 
     <include app:graph="@navigation/post"/>
     <include app:graph="@navigation/comment"/>
     <include app:graph="@navigation/profile"/>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.rprikhodko.habrareader.ui.dashboard.CategoriesFragment"
-        android:label="fragment_dashboard"
+        android:id="@+id/navigation_categories"
+        android:name="com.rprikhodko.habrareader.categories.ui.CategoriesFragment"
+        android:label="Categories"
         tools:layout="@layout/fragment_categories" />
 </navigation>
