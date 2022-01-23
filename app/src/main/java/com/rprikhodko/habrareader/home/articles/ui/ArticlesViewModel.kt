@@ -10,7 +10,7 @@ import com.rprikhodko.habrareader.common.data.dto.PostPreview
 import com.rprikhodko.habrareader.data.network.Period
 import com.rprikhodko.habrareader.data.network.Rating
 import com.rprikhodko.habrareader.data.network.SortBy
-import com.rprikhodko.habrareader.home.articles.PostsPagingSource
+import com.rprikhodko.habrareader.home.articles.ArticlesPagingSource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
@@ -48,7 +48,7 @@ class ArticlesViewModel @Inject constructor(
     private val eventChannel = Channel<Event>(Channel.BUFFERED)
     val eventsFlow = eventChannel.receiveAsFlow()
 
-    private lateinit var pagingSource: PostsPagingSource
+    private lateinit var pagingSource: ArticlesPagingSource
 
     private fun newPager(): Pager<Int, PostPreview> {
         return Pager(config = PagingConfig(10, enablePlaceholders = false),
@@ -56,8 +56,8 @@ class ArticlesViewModel @Inject constructor(
     }
 
     private fun newSource(): PagingSource<Int, PostPreview> {
-        pagingSource = PostsPagingSource(repository,
-            PostsPagingSource.RepositoryParams(_filtersState.value!!.sortBy, _filtersState.value!!.period, _filtersState.value!!.rating))
+        pagingSource = ArticlesPagingSource(repository,
+            ArticlesPagingSource.RepositoryParams(_filtersState.value!!.sortBy, _filtersState.value!!.period, _filtersState.value!!.rating))
             return pagingSource
     }
 

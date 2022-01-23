@@ -16,7 +16,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
-    private val homeViewModel by viewModels<HomeViewModel>()
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
@@ -37,15 +36,6 @@ class HomeFragment : Fragment() {
             tab.text = getTabTitle(position)
         }.attach()
 
-
-        //homeViewModel.getMainPage()
-
-        /*
-        binding.toArticle.setOnClickListener{ findNavController().navigate(R.id.action_navigation_home_to_postFragment) }
-        binding.toComments.setOnClickListener { findNavController().navigate(R.id.action_navigation_home_to_commentsFragment) }
-
-
-         */
         return root
     }
 

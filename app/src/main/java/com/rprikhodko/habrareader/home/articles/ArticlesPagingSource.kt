@@ -10,7 +10,7 @@ import com.rprikhodko.habrareader.data.network.SortBy
 import retrofit2.HttpException
 import java.lang.Exception
 
-class PostsPagingSource constructor(
+class ArticlesPagingSource constructor(
     val repository: PostsRepository,
     var repoParams: RepositoryParams
 ) : PagingSource<Int, PostPreview>() {
