@@ -1,4 +1,4 @@
-package com.rprikhodko.habrareader.data.network
+package com.rprikhodko.habrareader.common.data.network
 
 enum class Rating(val intValue: Int?) {
     AnyRating(null),

@@ -7,9 +7,9 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.*
 import com.rprikhodko.habrareader.home.articles.data.PostsRepository
 import com.rprikhodko.habrareader.common.data.dto.PostPreview
-import com.rprikhodko.habrareader.data.network.Period
-import com.rprikhodko.habrareader.data.network.Rating
-import com.rprikhodko.habrareader.data.network.SortBy
+import com.rprikhodko.habrareader.common.data.network.Period
+import com.rprikhodko.habrareader.common.data.network.Rating
+import com.rprikhodko.habrareader.common.data.network.SortBy
 import com.rprikhodko.habrareader.home.articles.ArticlesPagingSource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel

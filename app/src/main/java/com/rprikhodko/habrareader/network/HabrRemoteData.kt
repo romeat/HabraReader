@@ -1,7 +1,7 @@
 package com.rprikhodko.habrareader.network
 
-import com.rprikhodko.habrareader.data.network.Period
-import com.rprikhodko.habrareader.data.network.Rating
+import com.rprikhodko.habrareader.common.data.network.Period
+import com.rprikhodko.habrareader.common.data.network.Rating
 import javax.inject.Inject
 
 class HabrRemoteData @Inject constructor(private val mainService : MainService) {
