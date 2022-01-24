@@ -37,7 +37,7 @@ class NewsFragment : Fragment() {
         binding.postList.adapter = adapter
         viewLifecycleOwner.lifecycleScope.launch{
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-               newsViewModel.news.collectLatest{ value ->
+                newsViewModel.news.collectLatest{ value ->
                     adapter.submitData(value)
                 }
             }

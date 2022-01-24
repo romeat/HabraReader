@@ -1,4 +1,4 @@
-package com.rprikhodko.habrareader.categories.hubs.ui
+package com.rprikhodko.habrareader.categories.companies.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,20 +9,21 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.rprikhodko.habrareader.categories.hubs.HubAdapter
-import com.rprikhodko.habrareader.databinding.FragmentHubsBinding
+import com.rprikhodko.habrareader.categories.companies.CompanyAdapter
+import com.rprikhodko.habrareader.databinding.FragmentCompaniesBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class HubsFragment : Fragment() {
-    private val viewModel by viewModels<HubsViewModel>()
-    private var _binding: FragmentHubsBinding? = null
+class CompaniesFragment : Fragment() {
+
+    private val viewModel by viewModels<CompaniesViewModel>()
+    private var _binding: FragmentCompaniesBinding? = null
     private val binding get() = _binding!!
 
     private val adapter by lazy(LazyThreadSafetyMode.NONE) {
-        HubAdapter()
+        CompanyAdapter()
     }
 
     override fun onCreateView(
@@ -30,12 +31,12 @@ class HubsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHubsBinding.inflate(inflater, container, false)
+        _binding = FragmentCompaniesBinding.inflate(inflater, container, false)
 
-        binding.hubsList.adapter = adapter
+        binding.companiesList.adapter = adapter
         viewLifecycleOwner.lifecycleScope.launch{
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.hubs.collectLatest { value ->
+                viewModel.companies.collectLatest { value ->
                     adapter.submitData(value)
                 }
             }

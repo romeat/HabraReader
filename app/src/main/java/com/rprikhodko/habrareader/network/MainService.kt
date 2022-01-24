@@ -1,8 +1,9 @@
 package com.rprikhodko.habrareader.network
 
-import com.rprikhodko.habrareader.data.dto.hub.HubDetails
+import com.rprikhodko.habrareader.categories.authors.data.AuthorsPage
+import com.rprikhodko.habrareader.categories.companies.data.CompaniesPage
+import com.rprikhodko.habrareader.categories.hubs.data.HubsPage
 import com.rprikhodko.habrareader.common.data.dto.PostsPage
-import com.rprikhodko.habrareader.data.dto.hub.HubsPage
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -19,13 +20,18 @@ interface MainService {
     ): Response<PostsPage>
 
     @GET("users/")
-    suspend fun getUsersPage(@Query("page") page: Int): Response<PostsPage>
+    suspend fun getUsersPage(@Query("page") page: Int): Response<AuthorsPage>
 
     @GET("hubs/")
     suspend fun getHubsPage(@Query("page") page: Int): Response<HubsPage>
 
-    @GET("hubs/{hub}/profile/")
-    suspend fun getHubProfile(@Path("hub", encoded = true) hub: String): Response<HubDetails>
+    @GET("companies/")
+    suspend fun getCompaniesPage(@Query("page") page: Int,
+                                 @Query("order") order: String?,
+                                 @Query("orderDirection") orderDirection: String?
+    ): Response<CompaniesPage>
 
+    //@GET("hubs/{hub}/profile/")
+    //suspend fun getHubProfile(@Path("hub", encoded = true) hub: String): Response<HubDetails>
 
 }

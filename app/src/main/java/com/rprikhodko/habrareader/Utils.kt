@@ -39,6 +39,13 @@ class Utils {
                 12 -> "декабря"
                 else -> ""
             }
+
+        val Int.toStringWithThousands: String
+            get() = if(this < 1000) {
+                this.toString()
+            } else {
+                "%.1f".format(this.toDouble()/1000) + "K"
+            }
     }
 
 }
