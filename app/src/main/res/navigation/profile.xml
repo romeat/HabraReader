@@ -6,6 +6,10 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.rprikhodko.habrareader.author.ui.ProfileFragment"
-        android:label="ProfileFragment" /><action android:id="@+id/action_global_profileFragment" app:destination="@id/profileFragment"/>
+        android:name="com.rprikhodko.habrareader.author.ui.AuthorFragment"
+        android:label="ProfileFragment" >
+        <argument
+            android:name="authorAlias"
+            app:argType="string" />
+    </fragment><action android:id="@+id/action_global_profileFragment" app:destination="@id/profileFragment"/>
 </navigation>

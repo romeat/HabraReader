@@ -9,7 +9,7 @@ import com.rprikhodko.habrareader.Utils
 import com.rprikhodko.habrareader.common.data.dto.PostPreview
 import com.rprikhodko.habrareader.databinding.PostItemBinding
 
-class PostAdapter : PagingDataAdapter<PostPreview, RecyclerView.ViewHolder>(PostDiffCallback()) {
+class PostAdapter(private val onClickListener: OnClickListener) : PagingDataAdapter<PostPreview, RecyclerView.ViewHolder>(PostDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return PostViewHolder(
@@ -23,13 +23,17 @@ class PostAdapter : PagingDataAdapter<PostPreview, RecyclerView.ViewHolder>(Post
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val post = getItem(position)
-        post?.let { (holder as PostViewHolder).bind(it) }
+        post?.let {
+            holder.itemView.setOnClickListener {
+                onClickListener.onClick(post)
+            }
+            (holder as PostViewHolder).bind(it)
+        }
     }
 
     class PostViewHolder(private val binding: PostItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: PostPreview) {
-
             with(binding) {
                 author.text = item.author.alias
                 title.text = item.title
@@ -39,9 +43,17 @@ class PostAdapter : PagingDataAdapter<PostPreview, RecyclerView.ViewHolder>(Post
                 comments.text = stats.commentsCount.toString()
                 views.text = stats.readingCount.toString()
             }
+            /*
+                        Glide.with(binding.avatar)
+                .load(item.author.avatarUrl?)
+                .into(binding.avatar)
+             */
         }
     }
 
+    class OnClickListener(val clickListener: (post: PostPreview) -> Unit) {
+        fun onClick(post: PostPreview) = clickListener(post)
+    }
 
     class PostDiffCallback : DiffUtil.ItemCallback<PostPreview>() {
 

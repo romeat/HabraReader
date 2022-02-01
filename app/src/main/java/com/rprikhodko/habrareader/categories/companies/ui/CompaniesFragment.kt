@@ -4,15 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.rprikhodko.habrareader.categories.companies.CompanyAdapter
+import androidx.navigation.fragment.findNavController
+import com.rprikhodko.habrareader.R
+import com.rprikhodko.habrareader.categories.companies.adapters.CompanyAdapter
+import com.rprikhodko.habrareader.company.ui.COMPANY_ALIAS_ARG_NAME
 import com.rprikhodko.habrareader.databinding.FragmentCompaniesBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -23,7 +29,7 @@ class CompaniesFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val adapter by lazy(LazyThreadSafetyMode.NONE) {
-        CompanyAdapter()
+        CompanyAdapter(CompanyAdapter.OnClickListener{ company -> viewModel.onCompanyClick(company) })
     }
 
     override fun onCreateView(
@@ -41,6 +47,13 @@ class CompaniesFragment : Fragment() {
                 }
             }
         }
+
+        viewModel.eventsFlow.onEach {
+            when(it) {
+                is Event.NavigateToCompany -> findNavController().navigate(R.id.company, bundleOf(
+                    COMPANY_ALIAS_ARG_NAME to it.companyAlias))
+            }
+        }.launchIn(viewLifecycleOwner.lifecycleScope)
 
         return binding.root
     }

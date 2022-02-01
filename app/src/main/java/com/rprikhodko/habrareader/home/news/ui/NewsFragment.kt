@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class NewsFragment : Fragment() {
+class NewsFragment : Fragment(){
 
     private val newsViewModel by viewModels<NewsViewModel>()
     private var _binding: FragmentNewsBinding? = null
@@ -24,7 +24,7 @@ class NewsFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val adapter by lazy(LazyThreadSafetyMode.NONE) {
-        PostAdapter()
+        PostAdapter(PostAdapter.OnClickListener{ post -> newsViewModel.onPostClick(post) })
     }
 
     override fun onCreateView(

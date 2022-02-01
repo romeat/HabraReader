@@ -1,4 +1,4 @@
-package com.rprikhodko.habrareader.categories.companies
+package com.rprikhodko.habrareader.categories.companies.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,7 +9,7 @@ import com.rprikhodko.habrareader.Utils.Companion.toStringWithThousands
 import com.rprikhodko.habrareader.categories.companies.data.CompanyPreview
 import com.rprikhodko.habrareader.databinding.CompanyItemBinding
 
-class CompanyAdapter : PagingDataAdapter<CompanyPreview, RecyclerView.ViewHolder>(PostDiffCallback()) {
+class CompanyAdapter(private val onClickListener: OnClickListener) : PagingDataAdapter<CompanyPreview, RecyclerView.ViewHolder>(PostDiffCallback()) {
 
     class PostDiffCallback : DiffUtil.ItemCallback<CompanyPreview>() {
         override fun areItemsTheSame(oldItem: CompanyPreview, newItem: CompanyPreview): Boolean {
@@ -19,6 +19,10 @@ class CompanyAdapter : PagingDataAdapter<CompanyPreview, RecyclerView.ViewHolder
         override fun areContentsTheSame(oldItem: CompanyPreview, newItem: CompanyPreview): Boolean {
             return oldItem == newItem
         }
+    }
+
+    class OnClickListener(val clickListener: (company: CompanyPreview) -> Unit) {
+        fun onClick(company: CompanyPreview) = clickListener(company)
     }
 
     class CompanyViewHolder(private val binding: CompanyItemBinding) :
@@ -35,7 +39,11 @@ class CompanyAdapter : PagingDataAdapter<CompanyPreview, RecyclerView.ViewHolder
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val company = getItem(position)
-        company?.let { (holder as CompanyViewHolder).bind(it) }
+        company?.let {
+            holder.itemView.setOnClickListener {
+                onClickListener.onClick(company)
+            }
+            (holder as CompanyViewHolder).bind(it) }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

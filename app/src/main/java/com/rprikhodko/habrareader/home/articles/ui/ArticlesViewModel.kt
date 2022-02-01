@@ -10,7 +10,9 @@ import com.rprikhodko.habrareader.common.data.dto.PostPreview
 import com.rprikhodko.habrareader.common.data.network.Period
 import com.rprikhodko.habrareader.common.data.network.Rating
 import com.rprikhodko.habrareader.common.data.network.SortBy
+import com.rprikhodko.habrareader.common.interfaces.OnPostListener
 import com.rprikhodko.habrareader.home.articles.ArticlesPagingSource
+import com.rprikhodko.habrareader.home.articles.ui.Event.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
@@ -22,7 +24,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ArticlesViewModel @Inject constructor(
     private val repository: PostsRepository
-) : ViewModel() {
+) : ViewModel(), OnPostListener {
 
     val filtersState: LiveData<FiltersViewState>
         get() = _filtersState
@@ -40,10 +42,6 @@ class ArticlesViewModel @Inject constructor(
     }
 
     val posts: Flow<PagingData<PostPreview>> = newPager().flow.cachedIn(viewModelScope)//.stateIn(viewModelScope, SharingStarted.Lazily, PagingData.empty())
-
-    sealed class Event {
-        object RefreshAdapter: Event()
-    }
 
     private val eventChannel = Channel<Event>(Channel.BUFFERED)
     val eventsFlow = eventChannel.receiveAsFlow()
@@ -112,7 +110,7 @@ class ArticlesViewModel @Inject constructor(
 
     private fun onFiltersValueChange() {
         viewModelScope.launch {
-            eventChannel.send(Event.RefreshAdapter) // actually just scrolls recyclerview to top (to page 1)
+            eventChannel.send(RefreshAdapter) // actually just scrolls recyclerview to top (to page 1)
             delay(100) // let scroll complete (may be unnecessary)
             // reload page 1 but with new filter params
             // (if you just call invalidate() after N scrolled pages, source will reload all pages from page N back to page 1)
@@ -130,4 +128,10 @@ class ArticlesViewModel @Inject constructor(
         val period: Period,
         val periodVisible: Boolean,
     )
+
+    override fun onPostClick(post: PostPreview) {
+        viewModelScope.launch {
+            eventChannel.send(NavigateToPost(post.id))
+        }
+    }
 }

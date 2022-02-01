@@ -1,6 +1,7 @@
 package com.rprikhodko.habrareader.categories.authors.data
 
 import com.google.gson.annotations.SerializedName
+import com.rprikhodko.habrareader.common.data.dto.UserScore
 
 data class AuthorPreview(
     val id: Int,

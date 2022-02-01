@@ -1,4 +1,4 @@
-package com.rprikhodko.habrareader.categories.companies.data
+package com.rprikhodko.habrareader.common.data.dto
 
 data class CompanyStatistics(
     val subscribersCount: Int,

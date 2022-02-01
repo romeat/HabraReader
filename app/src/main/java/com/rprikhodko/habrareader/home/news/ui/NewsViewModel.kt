@@ -3,7 +3,9 @@ package com.rprikhodko.habrareader.home.news.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.*
+import com.rprikhodko.habrareader.common.adapters.PostAdapter
 import com.rprikhodko.habrareader.common.data.dto.PostPreview
+import com.rprikhodko.habrareader.common.interfaces.OnPostListener
 import com.rprikhodko.habrareader.home.news.NewsPagingSource
 import com.rprikhodko.habrareader.home.news.domain.GetNewsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class NewsViewModel @Inject constructor(
     private val useCase: GetNewsUseCase
-) : ViewModel() {
+) : ViewModel(), OnPostListener {
 
     val news: Flow<PagingData<PostPreview>> = newPager().flow.cachedIn(viewModelScope)
 
@@ -24,5 +26,9 @@ class NewsViewModel @Inject constructor(
 
     private fun newSource(): PagingSource<Int, PostPreview> {
         return NewsPagingSource(useCase)
+    }
+
+    override fun onPostClick(post: PostPreview) {
+
     }
 }

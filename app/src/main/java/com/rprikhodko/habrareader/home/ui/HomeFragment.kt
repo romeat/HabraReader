@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import com.google.android.material.tabs.TabLayoutMediator
 import com.rprikhodko.habrareader.databinding.FragmentHomeBinding
 import com.rprikhodko.habrareader.home.ARTICLES_PAGE_INDEX
@@ -14,7 +13,7 @@ import com.rprikhodko.habrareader.home.NEWS_PAGE_INDEX
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment()  {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!

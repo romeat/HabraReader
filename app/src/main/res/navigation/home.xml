@@ -6,7 +6,6 @@
     app:startDestination="@id/navigation_home">
 
     <include app:graph="@navigation/post"/>
-    <include app:graph="@navigation/comment"/>
     <include app:graph="@navigation/profile"/>
 
     <fragment

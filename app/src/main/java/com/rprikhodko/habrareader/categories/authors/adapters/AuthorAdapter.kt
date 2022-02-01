@@ -1,4 +1,4 @@
-package com.rprikhodko.habrareader.categories.authors
+package com.rprikhodko.habrareader.categories.authors.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,8 +7,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.rprikhodko.habrareader.categories.authors.data.AuthorPreview
 import com.rprikhodko.habrareader.databinding.AuthorItemBinding
+import java.text.MessageFormat
 
-class AuthorAdapter : PagingDataAdapter<AuthorPreview, RecyclerView.ViewHolder>(PostDiffCallback()) {
+class AuthorAdapter(private val onClickListener: OnClickListener) : PagingDataAdapter<AuthorPreview, RecyclerView.ViewHolder>(
+    PostDiffCallback()
+) {
 
     class PostDiffCallback : DiffUtil.ItemCallback<AuthorPreview>() {
         override fun areItemsTheSame(oldItem: AuthorPreview, newItem: AuthorPreview): Boolean {
@@ -20,12 +23,16 @@ class AuthorAdapter : PagingDataAdapter<AuthorPreview, RecyclerView.ViewHolder>(
         }
     }
 
+    class OnClickListener(val clickListener: (author: AuthorPreview) -> Unit) {
+        fun onClick(author: AuthorPreview) = clickListener(author)
+    }
+
     class AuthorViewHolder(private val binding: AuthorItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: AuthorPreview) {
             with(binding) {
                 fullName.text = item.fullName
-                alias.text = item.alias
-                speciality.text = item.speciality
+                alias.text = MessageFormat.format("@{0}", item.alias)
+                speciality.text = item.speciality ?: "Пользователь"
                 rating.text = item.rating.toString()
                 score.text = item.scoreStats.score.toString()
             }
@@ -34,7 +41,11 @@ class AuthorAdapter : PagingDataAdapter<AuthorPreview, RecyclerView.ViewHolder>(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val author = getItem(position)
-        author?.let { (holder as AuthorViewHolder).bind(it) }
+        author?.let {
+            holder.itemView.setOnClickListener {
+                onClickListener.onClick(author)
+            }
+            (holder as AuthorViewHolder).bind(it) }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

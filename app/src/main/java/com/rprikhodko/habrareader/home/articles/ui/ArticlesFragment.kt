@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -11,6 +12,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.rprikhodko.habrareader.common.adapters.PostAdapter
 import com.rprikhodko.habrareader.R
@@ -33,7 +35,7 @@ class ArticlesFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val adapter by lazy(LazyThreadSafetyMode.NONE) {
-        PostAdapter()
+        PostAdapter(PostAdapter.OnClickListener { post -> articlesViewModel.onPostClick(post)})
     }
 
     override fun onCreateView(
@@ -55,7 +57,11 @@ class ArticlesFragment : Fragment() {
 
         articlesViewModel.eventsFlow
             .onEach {
-                binding.postList.scrollToPosition(0)
+                when(it) {
+                    is Event.RefreshAdapter -> binding.postList.scrollToPosition(0)
+                    //is Event.NavigateToPost -> (parentFragment as HomeNavFragment).navigateToPost(it.postId)//findNavController()?.navigate(PostFragmentDirections.actionGlobalPostFragment2(it.postId))\
+                    is Event.NavigateToPost -> findNavController().navigate(R.id.post, bundleOf("postId" to it.postId))
+                }
             }
             .launchIn(viewLifecycleOwner.lifecycleScope)
 

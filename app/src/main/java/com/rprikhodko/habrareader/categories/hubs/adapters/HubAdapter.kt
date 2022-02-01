@@ -1,4 +1,4 @@
-package com.rprikhodko.habrareader.categories.hubs
+package com.rprikhodko.habrareader.categories.hubs.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,12 +6,11 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.rprikhodko.habrareader.Utils.Companion.toStringWithThousands
-import com.rprikhodko.habrareader.categories.authors.AuthorAdapter
-import com.rprikhodko.habrareader.categories.authors.data.AuthorPreview
+import com.rprikhodko.habrareader.categories.hubs.OnHubListener
 import com.rprikhodko.habrareader.categories.hubs.data.HubPreview
 import com.rprikhodko.habrareader.databinding.HubItemBinding
 
-class HubAdapter : PagingDataAdapter<HubPreview, RecyclerView.ViewHolder>(PostDiffCallback()) {
+class HubAdapter(private val onClickListener: OnClickListener) : PagingDataAdapter<HubPreview, RecyclerView.ViewHolder>(PostDiffCallback()) {
 
     class PostDiffCallback : DiffUtil.ItemCallback<HubPreview>() {
         override fun areItemsTheSame(oldItem: HubPreview, newItem: HubPreview): Boolean {
@@ -21,6 +20,10 @@ class HubAdapter : PagingDataAdapter<HubPreview, RecyclerView.ViewHolder>(PostDi
         override fun areContentsTheSame(oldItem: HubPreview, newItem: HubPreview): Boolean {
             return oldItem == newItem
         }
+    }
+
+    class OnClickListener(val clickListener: (hub: HubPreview) -> Unit) {
+        fun onClick(hub: HubPreview) = clickListener(hub)
     }
 
     class HubViewHolder(private val binding: HubItemBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -36,7 +39,12 @@ class HubAdapter : PagingDataAdapter<HubPreview, RecyclerView.ViewHolder>(PostDi
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val hub = getItem(position)
-        hub?.let { (holder as HubViewHolder).bind(it) }
+        hub?.let {
+            holder.itemView.setOnClickListener {
+                onClickListener.onClick(hub)
+            }
+            (holder as HubViewHolder).bind(it)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

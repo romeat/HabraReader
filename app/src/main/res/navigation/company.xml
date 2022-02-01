@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/company"
+    app:startDestination="@id/companyFragment">
+
+    <fragment
+        android:id="@+id/companyFragment"
+        android:name="com.rprikhodko.habrareader.company.ui.CompanyFragment"
+        android:label="CompanyFragment" >
+        <argument
+            android:name="companyAlias"
+            app:argType="string" />
+    </fragment>
+    <action android:id="@+id/action_global_companyFragment" app:destination="@id/companyFragment" />
+</navigation>

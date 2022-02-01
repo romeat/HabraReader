@@ -6,8 +6,9 @@
     app:startDestination="@id/navigation_categories">
 
     <include app:graph="@navigation/post"/>
-    <include app:graph="@navigation/comment"/>
+    <include app:graph="@navigation/hub"/>
     <include app:graph="@navigation/profile"/>
+    <include app:graph="@navigation/company"/>
 
     <fragment
         android:id="@+id/navigation_categories"
