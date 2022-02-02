@@ -3,8 +3,7 @@ package com.rprikhodko.habrareader.home.news.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.*
-import com.rprikhodko.habrareader.common.adapters.PostAdapter
-import com.rprikhodko.habrareader.common.data.dto.PostPreview
+import com.rprihodko.habrareader.common.dto.PostPreview
 import com.rprikhodko.habrareader.common.interfaces.OnPostListener
 import com.rprikhodko.habrareader.home.news.NewsPagingSource
 import com.rprikhodko.habrareader.home.news.domain.GetNewsUseCase

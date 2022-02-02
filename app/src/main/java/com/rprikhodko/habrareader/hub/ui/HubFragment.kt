@@ -15,8 +15,8 @@ import androidx.navigation.fragment.navArgs
 import com.rprikhodko.habrareader.R
 import com.rprikhodko.habrareader.common.adapters.PostAdapter
 import com.rprikhodko.habrareader.databinding.FragmentHubBinding
-import com.rprikhodko.habrareader.hub.data.HubProfile
-import com.rprikhodko.habrareader.post.ui.POST_ID_ARG_NAME
+import com.rprihodko.habrareader.common.dto.HubProfile
+import com.rprihodko.habrareader.post.ui.POST_ID_ARG_NAME
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest

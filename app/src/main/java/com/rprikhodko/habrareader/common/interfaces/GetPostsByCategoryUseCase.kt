@@ -1,6 +1,6 @@
 package com.rprikhodko.habrareader.common.interfaces
 
-import com.rprikhodko.habrareader.common.data.dto.PostsPage
+import com.rprihodko.habrareader.common.dto.PostsPage
 import retrofit2.Response
 
 interface GetPostsByCategoryUseCase {

@@ -1,6 +1,6 @@
 package com.rprikhodko.habrareader.hub.ui
 
-import com.rprikhodko.habrareader.hub.data.HubProfile
+import com.rprihodko.habrareader.common.dto.HubProfile
 
 sealed class HubProfileUiState {
     object Loading: HubProfileUiState()

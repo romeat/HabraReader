@@ -18,15 +18,12 @@ import com.rprikhodko.habrareader.home.news.domain.GetNewsUseCaseImpl
 import com.rprikhodko.habrareader.hub.domain.GetHubPostsUseCase
 import com.rprikhodko.habrareader.hub.domain.GetHubProfileUseCase
 import com.rprikhodko.habrareader.hub.domain.GetHubProfileUseCaseImpl
-import com.rprikhodko.habrareader.network.HabrRemoteData
-import com.rprikhodko.habrareader.post.domain.GetPostUseCase
-import com.rprikhodko.habrareader.post.domain.GetPostUseCaseImpl
+import com.rprihodko.habrareader.post.domain.GetPostUseCase
+import com.rprihodko.habrareader.post.domain.GetPostUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Qualifier
-import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)

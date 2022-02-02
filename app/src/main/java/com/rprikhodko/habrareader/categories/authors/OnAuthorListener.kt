@@ -1,6 +1,6 @@
 package com.rprikhodko.habrareader.categories.authors
 
-import com.rprikhodko.habrareader.categories.authors.data.AuthorPreview
+import com.rprihodko.habrareader.common.dto.AuthorPreview
 
 interface OnAuthorListener {
     fun onAuthorClick(author: AuthorPreview)

@@ -2,7 +2,7 @@ package com.rprikhodko.habrareader.home.news
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.rprikhodko.habrareader.common.data.dto.PostPreview
+import com.rprihodko.habrareader.common.dto.PostPreview
 import com.rprikhodko.habrareader.home.news.domain.GetNewsUseCase
 import retrofit2.HttpException
 import java.lang.Exception

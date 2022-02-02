@@ -3,9 +3,9 @@ package com.rprikhodko.habrareader.categories.authors.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.*
+import com.rprihodko.habrareader.common.dto.AuthorPreview
 import com.rprikhodko.habrareader.categories.authors.AuthorsPagingSource
 import com.rprikhodko.habrareader.categories.authors.OnAuthorListener
-import com.rprikhodko.habrareader.categories.authors.data.AuthorPreview
 import com.rprikhodko.habrareader.categories.authors.domain.GetAuthorsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel

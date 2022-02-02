@@ -1,6 +1,6 @@
 package com.rprikhodko.habrareader.author.ui
 
-import com.rprikhodko.habrareader.author.data.AuthorProfile
+import com.rprihodko.habrareader.common.dto.AuthorProfile
 
 sealed class AuthorProfileUiState {
     object Loading: AuthorProfileUiState()

@@ -3,9 +3,9 @@ package com.rprikhodko.habrareader.categories.hubs.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.*
+import com.rprihodko.habrareader.common.dto.HubPreview
 import com.rprikhodko.habrareader.categories.hubs.HubsPagingSource
 import com.rprikhodko.habrareader.categories.hubs.OnHubListener
-import com.rprikhodko.habrareader.categories.hubs.data.HubPreview
 import com.rprikhodko.habrareader.categories.hubs.domain.GetHubsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel

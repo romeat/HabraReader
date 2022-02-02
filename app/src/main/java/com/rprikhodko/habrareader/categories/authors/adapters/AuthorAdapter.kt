@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.rprikhodko.habrareader.categories.authors.data.AuthorPreview
+import com.rprihodko.habrareader.common.dto.AuthorPreview
 import com.rprikhodko.habrareader.databinding.AuthorItemBinding
 import java.text.MessageFormat
 

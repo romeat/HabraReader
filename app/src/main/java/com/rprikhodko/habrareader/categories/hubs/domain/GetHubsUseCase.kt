@@ -1,6 +1,6 @@
 package com.rprikhodko.habrareader.categories.hubs.domain
 
-import com.rprikhodko.habrareader.categories.hubs.data.HubsPage
+import com.rprihodko.habrareader.common.dto.HubsPage
 import retrofit2.Response
 
 interface GetHubsUseCase {

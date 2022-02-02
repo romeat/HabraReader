@@ -2,7 +2,7 @@ package com.rprikhodko.habrareader.categories.companies
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.rprikhodko.habrareader.categories.companies.data.CompanyPreview
+import com.rprihodko.habrareader.common.dto.CompanyPreview
 import com.rprikhodko.habrareader.categories.companies.domain.GetCompaniesUseCase
 import retrofit2.HttpException
 import java.lang.Exception

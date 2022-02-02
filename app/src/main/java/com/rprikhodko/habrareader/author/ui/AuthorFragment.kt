@@ -13,10 +13,10 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.rprikhodko.habrareader.R
-import com.rprikhodko.habrareader.author.data.AuthorProfile
+import com.rprihodko.habrareader.common.dto.AuthorProfile
 import com.rprikhodko.habrareader.common.adapters.PostAdapter
 import com.rprikhodko.habrareader.databinding.FragmentAuthorBinding
-import com.rprikhodko.habrareader.post.ui.POST_ID_ARG_NAME
+import com.rprihodko.habrareader.post.ui.POST_ID_ARG_NAME
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest

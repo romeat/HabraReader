@@ -2,7 +2,7 @@ package com.rprikhodko.habrareader.categories.hubs
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.rprikhodko.habrareader.categories.hubs.data.HubPreview
+import com.rprihodko.habrareader.common.dto.HubPreview
 import com.rprikhodko.habrareader.categories.hubs.domain.GetHubsUseCase
 import retrofit2.HttpException
 import java.lang.Exception

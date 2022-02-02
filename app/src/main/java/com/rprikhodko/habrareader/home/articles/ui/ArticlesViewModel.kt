@@ -6,10 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.*
 import com.rprikhodko.habrareader.home.articles.data.PostsRepository
-import com.rprikhodko.habrareader.common.data.dto.PostPreview
-import com.rprikhodko.habrareader.common.data.network.Period
-import com.rprikhodko.habrareader.common.data.network.Rating
-import com.rprikhodko.habrareader.common.data.network.SortBy
+import com.rprihodko.habrareader.common.dto.PostPreview
+import com.rprihodko.habrareader.common.network.Period
+import com.rprihodko.habrareader.common.network.Rating
+import com.rprihodko.habrareader.common.network.SortBy
 import com.rprikhodko.habrareader.common.interfaces.OnPostListener
 import com.rprikhodko.habrareader.home.articles.ArticlesPagingSource
 import com.rprikhodko.habrareader.home.articles.ui.Event.*

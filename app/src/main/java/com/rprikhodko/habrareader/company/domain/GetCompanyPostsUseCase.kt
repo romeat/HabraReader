@@ -1,8 +1,8 @@
 package com.rprikhodko.habrareader.company.domain
 
-import com.rprikhodko.habrareader.common.data.dto.PostsPage
+import com.rprihodko.habrareader.common.dto.PostsPage
 import com.rprikhodko.habrareader.common.interfaces.GetPostsByCategoryUseCase
-import com.rprikhodko.habrareader.network.HabrRemoteData
+import com.rprihodko.habrareader.common.network.HabrRemoteData
 import retrofit2.Response
 import javax.inject.Inject
 

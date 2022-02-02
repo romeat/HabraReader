@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.rprikhodko.habrareader.Utils.Companion.toStringWithThousands
-import com.rprikhodko.habrareader.categories.companies.data.CompanyPreview
+import com.rprihodko.habrareader.common.Utils.Companion.toStringWithThousands
+import com.rprihodko.habrareader.common.dto.CompanyPreview
 import com.rprikhodko.habrareader.databinding.CompanyItemBinding
 
 class CompanyAdapter(private val onClickListener: OnClickListener) : PagingDataAdapter<CompanyPreview, RecyclerView.ViewHolder>(PostDiffCallback()) {

@@ -2,7 +2,7 @@ package com.rprikhodko.habrareader.categories.authors
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.rprikhodko.habrareader.categories.authors.data.AuthorPreview
+import com.rprihodko.habrareader.common.dto.*
 import com.rprikhodko.habrareader.categories.authors.domain.GetAuthorsUseCase
 import retrofit2.HttpException
 import java.lang.Exception

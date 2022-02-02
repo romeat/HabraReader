@@ -1,6 +1,6 @@
 package com.rprikhodko.habrareader.company.domain
 
-import com.rprikhodko.habrareader.company.data.CompanyProfile
+import com.rprihodko.habrareader.common.dto.CompanyProfile
 import retrofit2.Response
 
 interface GetCompanyProfileUseCase {

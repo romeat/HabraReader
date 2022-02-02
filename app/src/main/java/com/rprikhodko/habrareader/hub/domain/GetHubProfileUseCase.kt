@@ -1,6 +1,6 @@
 package com.rprikhodko.habrareader.hub.domain
 
-import com.rprikhodko.habrareader.hub.data.HubProfile
+import com.rprihodko.habrareader.common.dto.HubProfile
 import retrofit2.Response
 
 interface GetHubProfileUseCase {

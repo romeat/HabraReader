@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.*
 import com.rprikhodko.habrareader.categories.companies.CompaniesPagingSource
 import com.rprikhodko.habrareader.categories.companies.OnCompanyListener
-import com.rprikhodko.habrareader.categories.companies.data.CompanyPreview
+import com.rprihodko.habrareader.common.dto.CompanyPreview
 import com.rprikhodko.habrareader.categories.companies.domain.GetCompaniesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel

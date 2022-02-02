@@ -1,7 +1,7 @@
 package com.rprikhodko.habrareader.categories.authors.domain
 
-import com.rprikhodko.habrareader.categories.authors.data.AuthorsPage
-import com.rprikhodko.habrareader.network.HabrRemoteData
+import com.rprihodko.habrareader.common.dto.AuthorsPage
+import com.rprihodko.habrareader.common.network.HabrRemoteData
 import retrofit2.Response
 import javax.inject.Inject
 

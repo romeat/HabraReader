@@ -1,7 +1,6 @@
 package com.rprikhodko.habrareader.company.ui
 
 import android.os.Bundle
-import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,9 +17,9 @@ import androidx.navigation.fragment.navArgs
 import com.rprikhodko.habrareader.R
 import com.rprikhodko.habrareader.author.ui.Event
 import com.rprikhodko.habrareader.common.adapters.PostAdapter
-import com.rprikhodko.habrareader.company.data.CompanyProfile
+import com.rprihodko.habrareader.common.dto.CompanyProfile
 import com.rprikhodko.habrareader.databinding.FragmentCompanyBinding
-import com.rprikhodko.habrareader.post.ui.POST_ID_ARG_NAME
+import com.rprihodko.habrareader.post.ui.POST_ID_ARG_NAME
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest

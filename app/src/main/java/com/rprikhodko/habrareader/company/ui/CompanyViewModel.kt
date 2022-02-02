@@ -6,10 +6,10 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.*
 import com.rprikhodko.habrareader.author.ui.Event
 import com.rprikhodko.habrareader.common.CategoryPostsPagingSource
-import com.rprikhodko.habrareader.common.data.dto.PostPreview
+import com.rprihodko.habrareader.common.dto.PostPreview
 import com.rprikhodko.habrareader.common.interfaces.GetPostsByCategoryUseCase
 import com.rprikhodko.habrareader.common.interfaces.OnPostListener
-import com.rprikhodko.habrareader.company.data.CompanyProfile
+import com.rprihodko.habrareader.common.dto.CompanyProfile
 import com.rprikhodko.habrareader.company.domain.GetCompanyProfileUseCase
 import com.rprikhodko.habrareader.di.CompanyCategory
 import dagger.assisted.Assisted

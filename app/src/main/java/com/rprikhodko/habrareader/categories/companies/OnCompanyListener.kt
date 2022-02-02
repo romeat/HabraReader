@@ -1,6 +1,6 @@
 package com.rprikhodko.habrareader.categories.companies
 
-import com.rprikhodko.habrareader.categories.companies.data.CompanyPreview
+import com.rprihodko.habrareader.common.dto.CompanyPreview
 
 interface OnCompanyListener {
     fun onCompanyClick(company: CompanyPreview)

@@ -16,9 +16,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.rprikhodko.habrareader.common.adapters.PostAdapter
 import com.rprikhodko.habrareader.R
-import com.rprikhodko.habrareader.common.data.network.Period
-import com.rprikhodko.habrareader.common.data.network.Rating
-import com.rprikhodko.habrareader.common.data.network.SortBy
+import com.rprihodko.habrareader.common.network.Period
+import com.rprihodko.habrareader.common.network.Rating
+import com.rprihodko.habrareader.common.network.SortBy
 import com.rprikhodko.habrareader.databinding.FragmentArticlesBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest

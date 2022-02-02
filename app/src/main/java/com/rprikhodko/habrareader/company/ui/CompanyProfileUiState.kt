@@ -1,6 +1,6 @@
 package com.rprikhodko.habrareader.company.ui
 
-import com.rprikhodko.habrareader.company.data.CompanyProfile
+import com.rprihodko.habrareader.common.dto.CompanyProfile
 
 sealed class CompanyProfileUiState {
     object Loading: CompanyProfileUiState()

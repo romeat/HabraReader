@@ -1,8 +1,8 @@
 package com.rprikhodko.habrareader.home.articles.data
 
-import com.rprikhodko.habrareader.common.data.network.Period
-import com.rprikhodko.habrareader.common.data.network.Rating
-import com.rprikhodko.habrareader.network.HabrRemoteData
+import com.rprihodko.habrareader.common.network.Period
+import com.rprihodko.habrareader.common.network.Rating
+import com.rprihodko.habrareader.common.network.HabrRemoteData
 import javax.inject.Inject
 import javax.inject.Singleton
 

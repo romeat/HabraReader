@@ -3,10 +3,10 @@ package com.rprikhodko.habrareader.home.articles
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.rprikhodko.habrareader.home.articles.data.PostsRepository
-import com.rprikhodko.habrareader.common.data.dto.PostPreview
-import com.rprikhodko.habrareader.common.data.network.Period
-import com.rprikhodko.habrareader.common.data.network.Rating
-import com.rprikhodko.habrareader.common.data.network.SortBy
+import com.rprihodko.habrareader.common.dto.PostPreview
+import com.rprihodko.habrareader.common.network.Period
+import com.rprihodko.habrareader.common.network.Rating
+import com.rprihodko.habrareader.common.network.SortBy
 import retrofit2.HttpException
 import java.lang.Exception
 

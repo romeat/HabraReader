@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.rprikhodko.habrareader.Utils
-import com.rprikhodko.habrareader.common.data.dto.PostPreview
+import com.rprihodko.habrareader.common.Utils
+import com.rprihodko.habrareader.common.dto.PostPreview
 import com.rprikhodko.habrareader.databinding.PostItemBinding
 
 class PostAdapter(private val onClickListener: OnClickListener) : PagingDataAdapter<PostPreview, RecyclerView.ViewHolder>(PostDiffCallback()) {

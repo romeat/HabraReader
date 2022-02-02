@@ -1,6 +1,6 @@
 package com.rprikhodko.habrareader.categories.authors.domain
 
-import com.rprikhodko.habrareader.categories.authors.data.AuthorsPage
+import com.rprihodko.habrareader.common.dto.AuthorsPage
 import retrofit2.Response
 
 interface GetAuthorsUseCase {
