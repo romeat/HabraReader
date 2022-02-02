@@ -13,7 +13,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.rprikhodko.habrareader.R
-import com.rprikhodko.habrareader.common.adapters.PostAdapter
+import com.rprihodko.habrareader.common.adapters.PostAdapter
 import com.rprikhodko.habrareader.databinding.FragmentHubBinding
 import com.rprihodko.habrareader.common.dto.HubProfile
 import com.rprihodko.habrareader.post.ui.POST_ID_ARG_NAME

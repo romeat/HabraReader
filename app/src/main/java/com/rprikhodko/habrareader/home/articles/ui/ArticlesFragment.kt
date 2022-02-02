@@ -14,7 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.rprikhodko.habrareader.common.adapters.PostAdapter
+import com.rprihodko.habrareader.common.adapters.PostAdapter
 import com.rprikhodko.habrareader.R
 import com.rprihodko.habrareader.common.network.Period
 import com.rprihodko.habrareader.common.network.Rating

@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.rprikhodko.habrareader.common.adapters.PostAdapter
+import com.rprihodko.habrareader.common.adapters.PostAdapter
 import com.rprikhodko.habrareader.databinding.FragmentNewsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest

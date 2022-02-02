@@ -10,7 +10,7 @@ import com.rprihodko.habrareader.common.dto.PostPreview
 import com.rprihodko.habrareader.common.network.Period
 import com.rprihodko.habrareader.common.network.Rating
 import com.rprihodko.habrareader.common.network.SortBy
-import com.rprikhodko.habrareader.common.interfaces.OnPostListener
+import com.rprihodko.habrareader.common.interfaces.OnPostListener
 import com.rprikhodko.habrareader.home.articles.ArticlesPagingSource
 import com.rprikhodko.habrareader.home.articles.ui.Event.*
 import dagger.hilt.android.lifecycle.HiltViewModel

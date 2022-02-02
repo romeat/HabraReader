@@ -1,9 +1,9 @@
-package com.rprikhodko.habrareader.common
+package com.rprihodko.habrareader.common
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.rprihodko.habrareader.common.dto.PostPreview
-import com.rprikhodko.habrareader.common.interfaces.GetPostsByCategoryUseCase
+import com.rprihodko.habrareader.common.interfaces.GetPostsByCategoryUseCase
 import retrofit2.HttpException
 import java.lang.Exception
 

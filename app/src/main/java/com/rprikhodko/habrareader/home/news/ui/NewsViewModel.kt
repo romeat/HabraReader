@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.*
 import com.rprihodko.habrareader.common.dto.PostPreview
-import com.rprikhodko.habrareader.common.interfaces.OnPostListener
+import com.rprihodko.habrareader.common.interfaces.OnPostListener
 import com.rprikhodko.habrareader.home.news.NewsPagingSource
 import com.rprikhodko.habrareader.home.news.domain.GetNewsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

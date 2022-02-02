@@ -9,7 +9,7 @@ import com.rprikhodko.habrareader.categories.companies.domain.GetCompaniesUseCas
 import com.rprikhodko.habrareader.categories.companies.domain.GetCompaniesUseCaseImpl
 import com.rprikhodko.habrareader.categories.hubs.domain.GetHubsUseCase
 import com.rprikhodko.habrareader.categories.hubs.domain.GetHubsUseCaseImpl
-import com.rprikhodko.habrareader.common.interfaces.GetPostsByCategoryUseCase
+import com.rprihodko.habrareader.common.interfaces.GetPostsByCategoryUseCase
 import com.rprikhodko.habrareader.company.domain.GetCompanyPostsUseCase
 import com.rprikhodko.habrareader.company.domain.GetCompanyProfileUseCase
 import com.rprikhodko.habrareader.company.domain.GetCompanyProfileUseCaseImpl
@@ -31,9 +31,6 @@ abstract class UseCaseModule {
 
     @Binds
     abstract fun bindNewsUseCase(useCaseImpl: GetNewsUseCaseImpl) : GetNewsUseCase
-
-    @Binds
-    abstract fun bindPostUseCase(useCaseImpl: GetPostUseCaseImpl) : GetPostUseCase
 
 
     /* Author related bindings */

@@ -4,12 +4,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.paging.*
+import com.rprihodko.habrareader.common.CategoryPostsPagingSource
 import com.rprihodko.habrareader.common.dto.AuthorProfile
 import com.rprikhodko.habrareader.author.domain.GetAuthorProfileUseCase
-import com.rprikhodko.habrareader.common.CategoryPostsPagingSource
 import com.rprihodko.habrareader.common.dto.PostPreview
-import com.rprikhodko.habrareader.common.interfaces.GetPostsByCategoryUseCase
-import com.rprikhodko.habrareader.common.interfaces.OnPostListener
+import com.rprihodko.habrareader.common.interfaces.GetPostsByCategoryUseCase
+import com.rprihodko.habrareader.common.interfaces.OnPostListener
 import com.rprikhodko.habrareader.di.AuthorCategory
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject

@@ -16,7 +16,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.rprikhodko.habrareader.R
 import com.rprikhodko.habrareader.author.ui.Event
-import com.rprikhodko.habrareader.common.adapters.PostAdapter
+import com.rprihodko.habrareader.common.adapters.PostAdapter
 import com.rprihodko.habrareader.common.dto.CompanyProfile
 import com.rprikhodko.habrareader.databinding.FragmentCompanyBinding
 import com.rprihodko.habrareader.post.ui.POST_ID_ARG_NAME

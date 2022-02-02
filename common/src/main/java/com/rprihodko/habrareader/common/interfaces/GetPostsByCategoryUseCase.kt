@@ -1,4 +1,4 @@
-package com.rprikhodko.habrareader.common.interfaces
+package com.rprihodko.habrareader.common.interfaces
 
 import com.rprihodko.habrareader.common.dto.PostsPage
 import retrofit2.Response

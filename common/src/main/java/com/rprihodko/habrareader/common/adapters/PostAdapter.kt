@@ -1,4 +1,4 @@
-package com.rprikhodko.habrareader.common.adapters
+package com.rprihodko.habrareader.common.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,8 +6,8 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.rprihodko.habrareader.common.Utils
+import com.rprihodko.habrareader.common.databinding.PostItemBinding
 import com.rprihodko.habrareader.common.dto.PostPreview
-import com.rprikhodko.habrareader.databinding.PostItemBinding
 
 class PostAdapter(private val onClickListener: OnClickListener) : PagingDataAdapter<PostPreview, RecyclerView.ViewHolder>(PostDiffCallback()) {
 
