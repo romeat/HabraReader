@@ -12,7 +12,6 @@ import com.rprikhodko.habrareader.home.HomePagerAdapter
 import com.rprikhodko.habrareader.home.NEWS_PAGE_INDEX
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class HomeFragment : Fragment()  {
 
     private var _binding: FragmentHomeBinding? = null
@@ -23,9 +22,9 @@ class HomeFragment : Fragment()  {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
         val tabLayout = binding.tabLayout
         val viewPager = binding.pager
 

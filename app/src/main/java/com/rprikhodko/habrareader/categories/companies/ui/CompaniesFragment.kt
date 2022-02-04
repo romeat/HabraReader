@@ -1,5 +1,6 @@
 package com.rprikhodko.habrareader.categories.companies.ui
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,9 +12,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import com.rprihodko.habrareader.common.navigation.ArgNames
 import com.rprikhodko.habrareader.R
 import com.rprikhodko.habrareader.categories.companies.adapters.CompanyAdapter
-import com.rprikhodko.habrareader.company.ui.COMPANY_ALIAS_ARG_NAME
 import com.rprikhodko.habrareader.databinding.FragmentCompaniesBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -50,8 +51,10 @@ class CompaniesFragment : Fragment() {
 
         viewModel.eventsFlow.onEach {
             when(it) {
-                is Event.NavigateToCompany -> findNavController().navigate(R.id.company, bundleOf(
-                    COMPANY_ALIAS_ARG_NAME to it.companyAlias))
+                is Event.NavigateToCompany -> findNavController().navigate(
+                    Uri.parse(ArgNames.COMPANY_DEEP_LINK + it.companyAlias))
+                    //R.id.company, bundleOf(
+                    //COMPANY_ALIAS_ARG_NAME to it.companyAlias))
             }
         }.launchIn(viewLifecycleOwner.lifecycleScope)
 

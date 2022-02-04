@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/company"
+    app:startDestination="@id/companyFragment">
+
+    <fragment
+        android:id="@+id/companyFragment"
+        android:name="com.rprihodko.habrareader.company.ui.CompanyFragment"
+        android:label="CompanyFragment">
+        <argument
+            android:name="companyAlias"
+            app:argType="string" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="habrareader://CompanyFragment/{companyAlias}" />
+    </fragment>
+</navigation>

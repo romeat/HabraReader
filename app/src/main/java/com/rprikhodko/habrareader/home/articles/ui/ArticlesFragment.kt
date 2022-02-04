@@ -1,5 +1,6 @@
 package com.rprikhodko.habrareader.home.articles.ui
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.rprihodko.habrareader.common.adapters.PostAdapter
+import com.rprihodko.habrareader.common.navigation.ArgNames
 import com.rprikhodko.habrareader.R
 import com.rprihodko.habrareader.common.network.Period
 import com.rprihodko.habrareader.common.network.Rating
@@ -59,8 +61,12 @@ class ArticlesFragment : Fragment() {
             .onEach {
                 when(it) {
                     is Event.RefreshAdapter -> binding.postList.scrollToPosition(0)
-                    //is Event.NavigateToPost -> (parentFragment as HomeNavFragment).navigateToPost(it.postId)//findNavController()?.navigate(PostFragmentDirections.actionGlobalPostFragment2(it.postId))\
-                    is Event.NavigateToPost -> findNavController().navigate(R.id.post, bundleOf("postId" to it.postId))
+                    is Event.NavigateToPost -> {
+                        findNavController().navigate(
+                            R.id.post, bundleOf("postId" to it.postId))
+                            // for some unknown reason deep link does not work from home stack
+                            //Uri.parse(ArgNames.POST_DEEP_LINK + it.postId))
+                    }
                 }
             }
             .launchIn(viewLifecycleOwner.lifecycleScope)

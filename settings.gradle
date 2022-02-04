@@ -2,3 +2,7 @@ rootProject.name = "habrareader"
 include ':app'
 include ':features:post'
 include ':common'
+include ':features:hub'
+include ':navigation'
+include ':features:company'
+include ':features:author'

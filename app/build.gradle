@@ -43,6 +43,9 @@ dependencies {
 
     implementation project(path: ':features:post')
     implementation project(path: ':common')
+    implementation project(path: ':features:hub')
+    implementation project(path: ':features:author')
+    implementation project(path: ':features:company')
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.7.0'

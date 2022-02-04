@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/hub"
+    app:startDestination="@id/hubFragment">
+
+    <fragment
+        android:id="@+id/hubFragment"
+        android:name="com.rprihodko.habrareader.hub.ui.HubFragment"
+        android:label="HubFragment">
+        <argument
+            android:name="hubAlias"
+            app:argType="string" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="habrareader://HubFragment/{hubAlias}" />
+    </fragment>
+
+</navigation>

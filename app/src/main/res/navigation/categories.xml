@@ -7,7 +7,7 @@
 
     <include app:graph="@navigation/post"/>
     <include app:graph="@navigation/hub"/>
-    <include app:graph="@navigation/profile"/>
+    <include app:graph="@navigation/author"/>
     <include app:graph="@navigation/company"/>
 
     <fragment

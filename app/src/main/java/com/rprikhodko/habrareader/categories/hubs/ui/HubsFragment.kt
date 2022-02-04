@@ -1,5 +1,6 @@
 package com.rprikhodko.habrareader.categories.hubs.ui
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,10 +12,10 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import com.rprihodko.habrareader.common.navigation.ArgNames
 import com.rprikhodko.habrareader.R
 import com.rprikhodko.habrareader.categories.hubs.adapters.HubAdapter
 import com.rprikhodko.habrareader.databinding.FragmentHubsBinding
-import com.rprikhodko.habrareader.hub.ui.HUB_ALIAS_ARG_NAME
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.launchIn
@@ -50,8 +51,10 @@ class HubsFragment : Fragment() {
 
         viewModel.eventsFlow.onEach {
             when(it) {
-                is Event.NavigateToHub -> findNavController().navigate(R.id.hub, bundleOf(
-                    HUB_ALIAS_ARG_NAME to it.hubAlias))
+                is Event.NavigateToHub -> findNavController().navigate(
+                    Uri.parse(ArgNames.HUB_DEEP_LINK + it.hubAlias))
+                    //R.id.hub, bundleOf(
+                    //HUB_ALIAS_ARG_NAME to it.hubAlias))
             }
         }.launchIn(viewLifecycleOwner.lifecycleScope)
 

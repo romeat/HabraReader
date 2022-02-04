@@ -1,5 +1,6 @@
 package com.rprikhodko.habrareader.categories.authors.ui
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.rprikhodko.habrareader.R
-import com.rprikhodko.habrareader.author.ui.AUTHOR_ALIAS_ARG_NAME
+import com.rprihodko.habrareader.common.navigation.ArgNames
 import com.rprikhodko.habrareader.categories.authors.adapters.AuthorAdapter
 import com.rprikhodko.habrareader.databinding.FragmentAuthorsBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -50,8 +51,10 @@ class AuthorsFragment : Fragment() {
 
         viewModel.eventsFlow.onEach {
             when(it) {
-                is Event.NavigateToAuthor -> findNavController().navigate(R.id.profile, bundleOf(
-                    AUTHOR_ALIAS_ARG_NAME to it.authorAlias))
+                is Event.NavigateToAuthor -> findNavController().navigate(
+                    Uri.parse(ArgNames.AUTHOR_DEEP_LINK + it.authorAlias))
+                    //R.id.profile, bundleOf(
+                    //AUTHOR_ALIAS_ARG_NAME to it.authorAlias))
             }
         }.launchIn(viewLifecycleOwner.lifecycleScope)
 

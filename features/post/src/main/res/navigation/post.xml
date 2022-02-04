@@ -7,10 +7,13 @@
     <fragment
         android:id="@+id/postFragment"
         android:name="com.rprihodko.habrareader.post.ui.PostFragment"
-        android:label="Post" >
+        android:label="Post">
         <argument
             android:name="postId"
             app:argType="integer" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="habrareader://PostFragment/{postId}" />
     </fragment>
-    <action android:id="@+id/action_global_postFragment2" app:destination="@id/postFragment" />
+    <action android:id="@+id/action_global_postFragment" app:destination="@id/postFragment"/>
 </navigation>

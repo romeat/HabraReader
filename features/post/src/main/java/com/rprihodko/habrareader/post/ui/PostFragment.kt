@@ -24,8 +24,6 @@ import kotlinx.coroutines.launch
 import org.xml.sax.XMLReader
 import javax.inject.Inject
 
-const val POST_ID_ARG_NAME = "postId"
-
 @AndroidEntryPoint
 class PostFragment: Fragment() {
 
