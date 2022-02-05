@@ -2,6 +2,8 @@ package com.rprikhodko.habrareader.categories.companies.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
+import androidx.core.view.isVisible
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -30,9 +32,12 @@ class CompanyAdapter(private val onClickListener: OnClickListener) : PagingDataA
         fun bind(item: CompanyPreview) {
             with(binding) {
                 title.text = item.title
-                description.text = item.description
                 rating.text = item.statistics.rating.toString()
                 subscribers.text = item.statistics.subscribersCount.toStringWithThousands
+                item.description?.let {
+                    description.text = HtmlCompat.fromHtml(it, HtmlCompat.FROM_HTML_MODE_COMPACT)
+                    description.isVisible = true
+                }
             }
         }
     }

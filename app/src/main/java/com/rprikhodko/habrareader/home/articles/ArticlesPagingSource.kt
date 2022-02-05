@@ -2,7 +2,7 @@ package com.rprikhodko.habrareader.home.articles
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.rprikhodko.habrareader.home.articles.data.PostsRepository
+import com.rprikhodko.habrareader.home.articles.domain.PostsRepository
 import com.rprihodko.habrareader.common.dto.PostPreview
 import com.rprihodko.habrareader.common.network.Period
 import com.rprihodko.habrareader.common.network.Rating

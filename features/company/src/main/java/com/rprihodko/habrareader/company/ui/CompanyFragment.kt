@@ -69,8 +69,6 @@ class CompanyFragment : Fragment() {
                 when(it) {
                     is Event.NavigateToPost -> findNavController().navigate(
                         Uri.parse(ArgNames.POST_DEEP_LINK + it.postId))
-                        //R.id.post,
-                        //bundleOf(POST_ID_ARG_NAME to it.postId))
                 }
             }.launchIn(viewLifecycleOwner.lifecycleScope)
 

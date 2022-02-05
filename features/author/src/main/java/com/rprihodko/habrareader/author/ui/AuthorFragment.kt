@@ -90,7 +90,7 @@ class AuthorFragment : Fragment() {
             rating.text = profile.rating.toString()
             karma.text = profile.scoreStats.score.toString()
             userAlias.text = MessageFormat.format("@{0}", profile.alias)
-            userSpeciality.text = profile.speciality ?: "Пользователь"
+            userSpeciality.text = profile.speciality ?: getString(R.string.user_default_label)
             postsCount.text = profile.counterStats.postCount.toString()
         }
     }

@@ -33,7 +33,7 @@ class NewsFragment : Fragment(){
     private val adapter by lazy(LazyThreadSafetyMode.NONE) {
         PostAdapter(PostAdapter.OnClickListener{ post -> newsViewModel.onPostClick(post) })
     }
-    //TODO: TODODODO onclick
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -55,7 +55,7 @@ class NewsFragment : Fragment(){
                 when(it) {
                     is Event.NavigateToPost -> findNavController().navigate(
                         R.id.post, bundleOf("postId" to it.postId))
-                        // for some unknown reason deep link does not work from home stack
+                        // for some unknown reason deep link does not work from home navigation stack
                         //Uri.parse(ArgNames.POST_DEEP_LINK + it.postId))
                 }
             }.launchIn(viewLifecycleOwner.lifecycleScope)

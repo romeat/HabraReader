@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -16,7 +15,6 @@ import androidx.navigation.fragment.navArgs
 import com.rprihodko.habrareader.common.adapters.PostAdapter
 import com.rprihodko.habrareader.common.dto.HubProfile
 import com.rprihodko.habrareader.common.navigation.ArgNames
-import com.rprihodko.habrareader.hub.R
 import com.rprihodko.habrareader.hub.databinding.FragmentHubBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -67,8 +65,6 @@ class HubFragment : Fragment() {
                 when(it) {
                     is Event.NavigateToPost -> findNavController().navigate(
                         Uri.parse(ArgNames.POST_DEEP_LINK + it.postId))
-                        //R.id.post, bundleOf(
-                        //POST_ID_ARG_NAME to it.postId))
                 }
             }.launchIn(viewLifecycleOwner.lifecycleScope)
 

@@ -7,6 +7,7 @@ import com.rprihodko.habrareader.common.dto.PostPage
 import com.rprihodko.habrareader.post.domain.GetPostUseCase
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -14,7 +15,6 @@ import retrofit2.HttpException
 import retrofit2.Response
 import java.lang.Exception
 
-//@HiltViewModel
 class PostViewModel @AssistedInject constructor(
     @Assisted private val postId: Int,
     private val useCase: GetPostUseCase

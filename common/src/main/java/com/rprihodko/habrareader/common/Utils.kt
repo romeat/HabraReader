@@ -3,6 +3,7 @@ package com.rprihodko.habrareader.common
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
+// TODO: hardcoded strings make localization impossible, and app resources are not available from static context
 class Utils {
     companion object {
         fun formatTime(timeString: String): String {
@@ -20,7 +21,14 @@ class Utils {
             } else {
                 datepart += " " + dateTime.year
             }
-            return datepart + " в " + dateTime.hour + ":" + dateTime.minute
+            val minutes = dateTime.minute.run {
+                if(this > 9) this.toString() else "0$this"
+            }
+
+            return listOf(datepart, "в", dateTime.hour.toString())
+                .joinToString(" ")
+                .plus(":")
+                .plus(minutes)
         }
 
         val LocalDateTime.monthStringValue: String

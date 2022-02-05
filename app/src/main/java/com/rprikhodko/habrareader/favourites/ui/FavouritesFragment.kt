@@ -10,7 +10,6 @@ import com.rprikhodko.habrareader.databinding.FragmentFavouritesBinding
 
 class FavouritesFragment : Fragment() {
 
-    private lateinit var favouritesViewModel: FavouritesViewModel
     private var _binding: FragmentFavouritesBinding? = null
       private val binding get() = _binding!!
 
@@ -19,9 +18,6 @@ class FavouritesFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        favouritesViewModel =
-                ViewModelProvider(this).get(FavouritesViewModel::class.java)
-
         _binding = FragmentFavouritesBinding.inflate(inflater, container, false)
         val root: View = binding.root
 

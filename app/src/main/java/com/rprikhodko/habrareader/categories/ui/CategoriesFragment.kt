@@ -17,8 +17,6 @@ import com.rprikhodko.habrareader.databinding.FragmentCategoriesBinding
 class CategoriesFragment : Fragment() {
 
     private var _binding: FragmentCategoriesBinding? = null
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -35,7 +33,7 @@ class CategoriesFragment : Fragment() {
         viewPager.adapter = CategoriesPagerAdapter(this)
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = getTabTitle(position)
+            tab.setText(getTabTitle(position))
         }.attach()
 
         return root
@@ -46,12 +44,12 @@ class CategoriesFragment : Fragment() {
         _binding = null
     }
 
-    private fun getTabTitle(position: Int): String? {
+    private fun getTabTitle(position: Int): Int {
         return when (position) {
-            HUBS_PAGE_INDEX -> "ХАБЫ"
-            AUTHORS_PAGE_INDEX -> "АВТОРЫ"
-            COMPANIES_PAGE_INDEX -> "КОМПАНИИ"
-            else -> null
+            HUBS_PAGE_INDEX -> R.string.hubs_tab_title
+            AUTHORS_PAGE_INDEX -> R.string.authors_tab_title
+            COMPANIES_PAGE_INDEX -> R.string.companies_tab_title
+            else -> throw IndexOutOfBoundsException()
         }
     }
 }

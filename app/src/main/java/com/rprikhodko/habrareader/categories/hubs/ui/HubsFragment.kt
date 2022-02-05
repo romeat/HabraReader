@@ -53,8 +53,6 @@ class HubsFragment : Fragment() {
             when(it) {
                 is Event.NavigateToHub -> findNavController().navigate(
                     Uri.parse(ArgNames.HUB_DEEP_LINK + it.hubAlias))
-                    //R.id.hub, bundleOf(
-                    //HUB_ALIAS_ARG_NAME to it.hubAlias))
             }
         }.launchIn(viewLifecycleOwner.lifecycleScope)
 

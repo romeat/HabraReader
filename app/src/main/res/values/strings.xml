@@ -1,8 +1,14 @@
 <resources>
     <string name="app_name">habrareader</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="title_post">Post</string>
+    <string name="title_home">Главная</string>
+    <string name="title_categories">Категории</string>
+    <string name="title_favourites">Избранное</string>
+    <string name="title_post">Пост</string>
     <string name="title_common">Common</string>
+    <string name="hubs_tab_title">ХАБЫ</string>
+    <string name="companies_tab_title">КОМПАНИИ</string>
+    <string name="authors_tab_title">АВТОРЫ</string>
+    <string name="articles_tab_title">СТАТЬИ</string>
+    <string name="news_tab_title">НОВОСТИ</string>
+
 </resources>

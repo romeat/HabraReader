@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
+import com.rprikhodko.habrareader.R
 import com.rprikhodko.habrareader.databinding.FragmentHomeBinding
 import com.rprikhodko.habrareader.home.ARTICLES_PAGE_INDEX
 import com.rprikhodko.habrareader.home.HomePagerAdapter
@@ -31,7 +32,7 @@ class HomeFragment : Fragment()  {
         viewPager.adapter = HomePagerAdapter(this)
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = getTabTitle(position)
+            tab.setText(getTabTitle(position))
         }.attach()
 
         return root
@@ -42,11 +43,11 @@ class HomeFragment : Fragment()  {
         _binding = null
     }
 
-    private fun getTabTitle(position: Int): String? {
+    private fun getTabTitle(position: Int): Int {
         return when (position) {
-            ARTICLES_PAGE_INDEX -> "СТАТЬИ"
-            NEWS_PAGE_INDEX -> "НОВОСТИ"
-            else -> null
+            ARTICLES_PAGE_INDEX -> R.string.articles_tab_title
+            NEWS_PAGE_INDEX -> R.string.news_tab_title
+            else -> throw IndexOutOfBoundsException()
         }
     }
 }

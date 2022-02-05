@@ -53,8 +53,6 @@ class CompaniesFragment : Fragment() {
             when(it) {
                 is Event.NavigateToCompany -> findNavController().navigate(
                     Uri.parse(ArgNames.COMPANY_DEEP_LINK + it.companyAlias))
-                    //R.id.company, bundleOf(
-                    //COMPANY_ALIAS_ARG_NAME to it.companyAlias))
             }
         }.launchIn(viewLifecycleOwner.lifecycleScope)
 

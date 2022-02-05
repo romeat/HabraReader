@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.rprihodko.habrareader.common.Utils.Companion.toStringWithThousands
 import com.rprihodko.habrareader.common.dto.HubPreview
-import com.rprikhodko.habrareader.categories.hubs.OnHubListener
 import com.rprikhodko.habrareader.databinding.HubItemBinding
 
 class HubAdapter(private val onClickListener: OnClickListener) : PagingDataAdapter<HubPreview, RecyclerView.ViewHolder>(PostDiffCallback()) {

@@ -53,8 +53,6 @@ class AuthorsFragment : Fragment() {
             when(it) {
                 is Event.NavigateToAuthor -> findNavController().navigate(
                     Uri.parse(ArgNames.AUTHOR_DEEP_LINK + it.authorAlias))
-                    //R.id.profile, bundleOf(
-                    //AUTHOR_ALIAS_ARG_NAME to it.authorAlias))
             }
         }.launchIn(viewLifecycleOwner.lifecycleScope)
 

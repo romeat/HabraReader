@@ -1,4 +1,4 @@
-package com.rprikhodko.habrareader.home.articles.data
+package com.rprikhodko.habrareader.home.articles.domain
 
 import com.rprihodko.habrareader.common.network.Period
 import com.rprihodko.habrareader.common.network.Rating

@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.*
-import com.rprikhodko.habrareader.home.articles.data.PostsRepository
+import com.rprikhodko.habrareader.home.articles.domain.PostsRepository
 import com.rprihodko.habrareader.common.dto.PostPreview
 import com.rprihodko.habrareader.common.network.Period
 import com.rprihodko.habrareader.common.network.Rating
@@ -41,7 +41,7 @@ class ArticlesViewModel @Inject constructor(
         )
     }
 
-    val posts: Flow<PagingData<PostPreview>> = newPager().flow.cachedIn(viewModelScope)//.stateIn(viewModelScope, SharingStarted.Lazily, PagingData.empty())
+    val posts: Flow<PagingData<PostPreview>> = newPager().flow.cachedIn(viewModelScope)
 
     private val eventChannel = Channel<Event>(Channel.BUFFERED)
     val eventsFlow = eventChannel.receiveAsFlow()
