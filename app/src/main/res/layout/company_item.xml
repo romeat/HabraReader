@@ -25,20 +25,28 @@
     <TextView
         android:id="@+id/title"
         style="@style/SubtitleTextAppearance.Black"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_4dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintWidth_max="wrap"
         app:layout_constraintLeft_toRightOf="@id/avatarBarrier"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="company title" />
 
     <TextView
         android:id="@+id/description"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_4dp"
         android:hint="@string/company_default_label"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintWidth_max="wrap"
         app:layout_constraintLeft_toRightOf="@id/avatarBarrier"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title"
         tools:text="description" />
 
