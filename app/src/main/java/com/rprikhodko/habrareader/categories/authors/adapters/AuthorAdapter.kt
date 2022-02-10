@@ -1,8 +1,10 @@
 package com.rprikhodko.habrareader.categories.authors.adapters
 
 import android.content.Context
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -35,7 +37,7 @@ class AuthorAdapter(private val onClickListener: OnClickListener) : PagingDataAd
     class AuthorViewHolder(private val binding: AuthorItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: AuthorPreview) {
             with(binding) {
-                fullName.text = item.fullName
+                fullName.text = item.fullName?.let { HtmlCompat.fromHtml(it, HtmlCompat.FROM_HTML_MODE_COMPACT) }
                 alias.text = MessageFormat.format("@{0}", item.alias)
                 speciality.text = item.speciality ?: speciality.hint
                 rating.text = item.rating.toString()

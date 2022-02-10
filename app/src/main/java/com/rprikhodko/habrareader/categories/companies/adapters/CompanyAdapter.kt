@@ -2,6 +2,7 @@ package com.rprikhodko.habrareader.categories.companies.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -37,7 +38,7 @@ class CompanyAdapter(private val onClickListener: OnClickListener) : PagingDataA
                 title.text = item.title
                 rating.text = item.statistics.rating.toString()
                 subscribers.text = item.statistics.subscribersCount.toStringWithThousands
-                description.text = item.description ?: description.hint
+                description.text = item.description?.let { HtmlCompat.fromHtml(it, HtmlCompat.FROM_HTML_MODE_COMPACT) } ?: description.hint
             }
             Glide.with(binding.avatar)
                 .load("https:".plus(item.imageUrl))
