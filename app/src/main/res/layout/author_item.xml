@@ -3,14 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="@dimen/category_item_padding">
 
     <ImageView
         android:id="@+id/avatar"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:src="@drawable/ic_home_black_24dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="@dimen/avatar_size_medium"
+        android:layout_height="@dimen/avatar_size_medium"
+        android:layout_margin="@dimen/margin_4dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/avatarBarrier"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Barrier
@@ -22,16 +24,20 @@
 
     <TextView
         android:id="@+id/fullName"
+        style="@style/SubtitleTextAppearance.Black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_4dp"
         app:layout_constraintLeft_toRightOf="@id/avatarBarrier"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="full name" />
 
     <TextView
         android:id="@+id/alias"
+        style="@style/MediumText.Brand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_4dp"
         app:layout_constraintLeft_toRightOf="@id/fullName"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="alias" />
@@ -40,27 +46,36 @@
         android:id="@+id/speciality"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintWidth_max="wrap"
-        app:layout_constraintHorizontal_weight="1"
+        android:layout_margin="@dimen/margin_4dp"
+        android:hint="@string/user_default_label"
         app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toRightOf="@id/avatarBarrier"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fullName"
+        app:layout_constraintWidth_max="wrap"
         tools:text="speciality" />
 
     <TextView
         android:id="@+id/rating"
+        style="@style/MediumText.Purple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/score"
+        android:layout_margin="@dimen/margin_4dp"
+        app:drawableLeftCompat="@drawable/ic_baseline_category_rating_24"
         app:layout_constraintStart_toStartOf="@id/avatarBarrier"
         app:layout_constraintTop_toBottomOf="@id/speciality"
         tools:text="123.4" />
 
     <TextView
         android:id="@+id/score"
+        style="@style/MediumText.Green"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_4dp"
+        app:drawableLeftCompat="@drawable/ic_baseline_karma_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toEndOf="@+id/rating"
         app:layout_constraintTop_toBottomOf="@id/speciality"
         tools:text="100" />

@@ -2,78 +2,139 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/post_item_padding"
+    android:layout_marginVertical="@dimen/post_item_margin_vertical"
+    android:background="?attr/colorSurface"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/author"
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="@dimen/avatar_size_small"
+        android:layout_height="@dimen/avatar_size_small"
+        tools:src="@drawable/ic_user_avatar_default_48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/userInfoBarrier"/>
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/avatarBarrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="vasya"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="avatar" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/userInfoBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="avatar,author,postDate" />
+
+    <TextView
+        android:id="@+id/author"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_4dp"
+        app:layout_constraintBottom_toTopOf="@+id/userInfoBarrier"
+        app:layout_constraintStart_toEndOf="@id/avatarBarrier"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="vasya_user" />
 
     <TextView
         android:id="@+id/postDate"
+        android:layout_margin="@dimen/margin_4dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="сегодня 13:37"
+        tools:text="сегодня 13:37"
         app:layout_constraintStart_toEndOf="@+id/author"
+        app:layout_constraintBottom_toTopOf="@+id/userInfoBarrier"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <TextView style="@style/TitleTextAppearance"
         android:id="@+id/title"
+        android:layout_marginVertical="@dimen/margin_8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Заголовок статьи "
+        tools:text="Заголовок статьи"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/author" />
+        app:layout_constraintTop_toBottomOf="@+id/userInfoBarrier"
+        app:layout_constraintBottom_toTopOf="@+id/titleBarrier"/>
 
     <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier"
+        android:id="@+id/titleBarrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
         app:constraint_referenced_ids="title" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/votesGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/viewsGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bookmarksGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.55" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/commentsGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
     <TextView
         android:id="@+id/votes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+3"
-        app:layout_constraintEnd_toStartOf="@+id/views"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/barrier" />
+        app:drawableLeftCompat="@drawable/ic_baseline_vote_rating_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/votesGuideline"
+        app:layout_constraintTop_toTopOf="@id/titleBarrier"
+        tools:text="+3" />
 
     <TextView
         android:id="@+id/views"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="444"
-        app:layout_constraintEnd_toStartOf="@+id/bookmarked"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/votes"
-        app:layout_constraintTop_toTopOf="@id/barrier" />
+        app:drawableLeftCompat="@drawable/ic_baseline_views_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/viewsGuideline"
+        app:layout_constraintTop_toTopOf="@id/titleBarrier"
+        tools:text="4K" />
 
     <TextView
         android:id="@+id/bookmarked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="111"
-        app:layout_constraintEnd_toStartOf="@+id/comments"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/views"
-        app:layout_constraintTop_toTopOf="@id/barrier" />
+        app:drawableLeftCompat="@drawable/ic_baseline_bookmark_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/bookmarksGuideline"
+        app:layout_constraintTop_toTopOf="@id/titleBarrier"
+        tools:text="111" />
 
     <TextView
         android:id="@+id/comments"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/bookmarked"
-        app:layout_constraintTop_toTopOf="@id/barrier" />
+        app:drawableLeftCompat="@drawable/ic_baseline_comment_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/commentsGuideline"
+        app:layout_constraintTop_toTopOf="@id/titleBarrier"
+        tools:text="+1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,9 +21,10 @@
     </style>
 
     <style name="ElevatedLayout">
-        <item name="android:elevation">4dp</item>
-        <item name="android:background">@color/colorWhite</item>
+        <item name="android:elevation">2dp</item>
+        <item name="android:background">?attr/colorSurface</item>
     </style>
+
     <style name="ToggleButtonStyle">
         <item name="android:disabledAlpha">?android:attr/disabledAlpha</item>
         <item name="android:background">@null</item>
@@ -36,4 +37,5 @@
         <item name="android:textOff">""</item>
         <item name="android:textOn">""</item>
     </style>
+
 </resources>

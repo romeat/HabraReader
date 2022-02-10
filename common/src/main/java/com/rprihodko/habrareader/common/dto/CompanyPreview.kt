@@ -7,6 +7,7 @@ data class CompanyPreview(
     val id: Int,
     val alias: String,
     @SerializedName("titleHtml") val title: String,
+    val imageUrl: String,
     @SerializedName("descriptionHtml") val description: String?,
     val statistics: CompanyStatistics,
 )

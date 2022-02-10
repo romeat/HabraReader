@@ -6,6 +6,9 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterInside
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.rprihodko.habrareader.common.dto.AuthorPreview
 import com.rprikhodko.habrareader.R
 import com.rprikhodko.habrareader.databinding.AuthorItemBinding
@@ -34,10 +37,15 @@ class AuthorAdapter(private val onClickListener: OnClickListener) : PagingDataAd
             with(binding) {
                 fullName.text = item.fullName
                 alias.text = MessageFormat.format("@{0}", item.alias)
-                item.speciality?.let { speciality.text = it }
+                speciality.text = item.speciality ?: speciality.hint
                 rating.text = item.rating.toString()
                 score.text = item.scoreStats.score.toString()
             }
+            Glide.with(binding.avatar)
+                .load("https:".plus(item.avatarUrl))
+                .transform(CenterInside(), RoundedCorners(10))
+                .placeholder(R.drawable.ic_user_avatar_default_48)
+                .into(binding.avatar)
         }
     }
 

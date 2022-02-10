@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:paddingHorizontal="@dimen/category_item_padding">
 
     <ImageView
         android:id="@+id/avatar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/ic_home_black_24dp" />
+        android:layout_width="@dimen/avatar_size_medium"
+        android:layout_height="@dimen/avatar_size_medium"
+        android:layout_margin="@dimen/margin_4dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/avatarBarrier"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/avatarBarrier"
@@ -22,34 +24,44 @@
 
     <TextView
         android:id="@+id/title"
+        style="@style/SubtitleTextAppearance.Black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_4dp"
         app:layout_constraintLeft_toRightOf="@id/avatarBarrier"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="hub title" />
+        tools:text="company title" />
 
     <TextView
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:layout_margin="@dimen/margin_4dp"
+        android:hint="@string/company_default_label"
         app:layout_constraintLeft_toRightOf="@id/avatarBarrier"
         app:layout_constraintTop_toBottomOf="@id/title"
         tools:text="description" />
 
     <TextView
         android:id="@+id/rating"
+        style="@style/MediumText.Purple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/subscribers"
+        android:layout_margin="@dimen/margin_4dp"
+        app:drawableLeftCompat="@drawable/ic_baseline_category_rating_24"
         app:layout_constraintStart_toStartOf="@id/avatarBarrier"
         app:layout_constraintTop_toBottomOf="@id/description"
         tools:text="123.4" />
 
     <TextView
         android:id="@+id/subscribers"
+        style="@style/MediumText.Green"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_4dp"
+        app:drawableLeftCompat="@drawable/ic_baseline_favorite_border_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toEndOf="@+id/rating"
         app:layout_constraintTop_toBottomOf="@id/description"
         tools:text="100" />

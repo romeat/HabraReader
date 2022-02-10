@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">habrareader</string>
+    <string name="title_home">Главная</string>
+    <string name="title_categories">Категории</string>
+    <string name="title_favourites">Избранное</string>
+    <string name="title_post">Пост</string>
+    <string name="title_common">Common</string>
+    <string name="hubs_tab_title">ХАБЫ</string>
+    <string name="companies_tab_title">КОМПАНИИ</string>
+    <string name="authors_tab_title">АВТОРЫ</string>
+    <string name="articles_tab_title">СТАТЬИ</string>
+    <string name="news_tab_title">НОВОСТИ</string>
+
     <string name="user_default_label">Пользователь</string>
+    <string name="company_default_label">Компания</string>
+    <string name="rating_label">Рейтинг</string>
+    <string name="subs_label">Подписчики</string>
+    <string name="karma_label">Карма</string>
+    <string name="posts_label">Посты</string>
 </resources>

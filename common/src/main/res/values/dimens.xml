@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="category_item_padding">10dp</dimen>
+    <dimen name="post_item_padding">8dp</dimen>
+    <dimen name="post_item_margin_vertical">8dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="radio_button_padding_horizontal">8dp</dimen>
+    <dimen name="radio_button_padding_horizontal_extra">24dp</dimen>
+    <dimen name="radio_button_margin_horizontal">4dp</dimen>
+
+    <dimen name="text_16sp">16sp</dimen>
+    <dimen name="text_20sp">20sp</dimen>
+    <dimen name="margin_4dp">4dp</dimen>
+    <dimen name="margin_8dp">8dp</dimen>
+
+    <dimen name="avatar_size_small">24dp</dimen>
+    <dimen name="avatar_size_medium">48dp</dimen>
+</resources>

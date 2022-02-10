@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorBrand">#FF548EAA</color>
+    <color name="colorBackground">#FFEBEBEB</color>
+    <color name="colorPrimary">#FFFFFFFF</color>
+    <color name="colorText_1000">#FF000000</color>
+
+    <color name="colorGreen">#FF7AA600</color>
+    <color name="colorRed">#FFD34E4E</color>
+    <color name="colorPurple">#FFCD66CD</color>
+    <!--
+    <color name="colorBrand_200">#77C9F2</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorDarkGrey">#FF121212</color>
+-->
+
+    <!--
+    <color name="colorGreyBackground">#FF000000</color>
+    <color name="colorOnPrimary">#FF000000</color>
+    -->
+</resources>

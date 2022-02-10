@@ -13,6 +13,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterInside
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.rprihodko.habrareader.author.R
 import com.rprihodko.habrareader.author.databinding.FragmentAuthorBinding
 import com.rprihodko.habrareader.common.dto.AuthorProfile
@@ -93,6 +96,11 @@ class AuthorFragment : Fragment() {
             userSpeciality.text = profile.speciality ?: getString(R.string.user_default_label)
             postsCount.text = profile.counterStats.postCount.toString()
         }
+        Glide.with(binding.avatar)
+            .load("https:".plus(profile.avatarUrl))
+            .transform(CenterInside(), RoundedCorners(10))
+            .placeholder(com.rprihodko.habrareader.common.R.drawable.ic_user_avatar_default_48)
+            .into(binding.avatar)
     }
 
     override fun onDestroyView() {

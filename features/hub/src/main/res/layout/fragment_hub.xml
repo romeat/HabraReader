@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/avatar"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="@dimen/avatar_size_medium"
+        android:layout_height="@dimen/avatar_size_medium"
+        android:layout_margin="@dimen/margin_4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,19 +22,23 @@
 
     <TextView
         android:id="@+id/rating"
+        style="@style/LargeText.Purple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="1330"
+        android:layout_margin="@dimen/margin_4dp"
         app:layout_constraintLeft_toRightOf="@id/avatarBarrier"
         app:layout_constraintRight_toLeftOf="@id/ratingBarrier"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="1330" />
 
     <TextView
-        android:id="@+id/ratingDescription"
+        android:id="@+id/ratingLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Рейтинг"
+        android:layout_margin="@dimen/margin_4dp"
+        android:text="@string/rating_label"
         app:layout_constraintLeft_toRightOf="@+id/avatarBarrier"
+        app:layout_constraintRight_toLeftOf="@id/ratingBarrier"
         app:layout_constraintTop_toBottomOf="@id/rating" />
 
     <androidx.constraintlayout.widget.Barrier
@@ -41,23 +46,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="end"
-        app:constraint_referenced_ids="rating,ratingDescription" />
+        app:constraint_referenced_ids="rating,ratingLabel" />
 
     <TextView
         android:id="@+id/subsCount"
+        style="@style/LargeText.Green"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="12444"
+        android:layout_margin="@dimen/margin_4dp"
         app:layout_constraintLeft_toRightOf="@id/ratingBarrier"
         app:layout_constraintRight_toLeftOf="@id/subsBarrier"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="15K" />
 
     <TextView
-        android:id="@+id/subsDescription"
+        android:id="@+id/subsLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Подписчики"
+        android:layout_margin="@dimen/margin_4dp"
+        android:text="@string/subs_label"
         app:layout_constraintLeft_toRightOf="@+id/ratingBarrier"
+        app:layout_constraintRight_toLeftOf="@id/subsBarrier"
         app:layout_constraintTop_toBottomOf="@id/subsCount" />
 
     <androidx.constraintlayout.widget.Barrier
@@ -65,37 +74,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="end"
-        app:constraint_referenced_ids="subsCount,subsDescription" />
+        app:constraint_referenced_ids="subsCount,subsLabel" />
 
     <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/hubInfoBarrier"
+        android:id="@+id/hubStatsBarrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="avatar" />
+        app:constraint_referenced_ids="avatar,ratingLabel,subsLabel" />
 
     <TextView
         android:id="@+id/hubTitle"
+        style="@style/CategoryTitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Title"
+        android:layout_margin="@dimen/margin_4dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hubInfoBarrier"/>
+        app:layout_constraintTop_toBottomOf="@+id/hubStatsBarrier"
+        tools:text="Title" />
 
     <TextView
         android:id="@+id/hubDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Description"
-        app:layout_constraintTop_toBottomOf="@+id/hubTitle"
+        android:layout_margin="@dimen/margin_4dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hubTitle"
+        tools:text="Description" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/postList"
+        style="@style/PostRecyclerBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipToPadding="false"
+        android:paddingVertical="@dimen/post_item_margin_vertical"
         app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
         app:layout_constrainedHeight="true"
         app:layout_constraintBottom_toBottomOf="parent"

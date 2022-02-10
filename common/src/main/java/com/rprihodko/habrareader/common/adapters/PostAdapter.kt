@@ -5,7 +5,13 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterInside
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
+import com.rprihodko.habrareader.common.R
 import com.rprihodko.habrareader.common.Utils
+import com.rprihodko.habrareader.common.Utils.Companion.toStringWithThousands
 import com.rprihodko.habrareader.common.databinding.PostItemBinding
 import com.rprihodko.habrareader.common.dto.PostPreview
 
@@ -41,13 +47,14 @@ class PostAdapter(private val onClickListener: OnClickListener) : PagingDataAdap
                 val stats = item.stats
                 votes.text = stats.votesCount.toString()
                 comments.text = stats.commentsCount.toString()
-                views.text = stats.readingCount.toString()
+                views.text = stats.readingCount.toStringWithThousands
+                bookmarked.text = stats.favoritesCount.toString()
             }
-            /*
-                        Glide.with(binding.avatar)
-                .load(item.author.avatarUrl?)
+            Glide.with(binding.avatar)
+                .load("https:".plus(item.author.avatarUrl))
+                .transform(CenterInside(), RoundedCorners(10))
+                .placeholder(R.drawable.ic_user_avatar_default_48)
                 .into(binding.avatar)
-             */
         }
     }
 

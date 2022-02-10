@@ -2,11 +2,14 @@ package com.rprikhodko.habrareader.categories.companies.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.text.HtmlCompat
-import androidx.core.view.isVisible
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterInside
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+
+
 import com.rprihodko.habrareader.common.Utils.Companion.toStringWithThousands
 import com.rprihodko.habrareader.common.dto.CompanyPreview
 import com.rprikhodko.habrareader.databinding.CompanyItemBinding
@@ -34,11 +37,12 @@ class CompanyAdapter(private val onClickListener: OnClickListener) : PagingDataA
                 title.text = item.title
                 rating.text = item.statistics.rating.toString()
                 subscribers.text = item.statistics.subscribersCount.toStringWithThousands
-                item.description?.let {
-                    description.text = HtmlCompat.fromHtml(it, HtmlCompat.FROM_HTML_MODE_COMPACT)
-                    description.isVisible = true
-                }
+                description.text = item.description ?: description.hint
             }
+            Glide.with(binding.avatar)
+                .load("https:".plus(item.imageUrl))
+                .transform(CenterInside(), RoundedCorners(10))
+                .into(binding.avatar)
         }
     }
 
