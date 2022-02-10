@@ -63,4 +63,8 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/colorText_1000</item>
     </style>
+
+    <style name="StatsTextAppearance">
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

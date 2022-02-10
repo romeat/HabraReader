@@ -99,6 +99,7 @@
 
     <TextView
         android:id="@+id/votes"
+        style="@style/StatsTextAppearance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:drawableLeftCompat="@drawable/ic_baseline_vote_rating_24"
@@ -109,6 +110,7 @@
 
     <TextView
         android:id="@+id/views"
+        style="@style/StatsTextAppearance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:drawableLeftCompat="@drawable/ic_baseline_views_24"
@@ -119,6 +121,7 @@
 
     <TextView
         android:id="@+id/bookmarked"
+        style="@style/StatsTextAppearance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:drawableLeftCompat="@drawable/ic_baseline_bookmark_24"
@@ -129,6 +132,7 @@
 
     <TextView
         android:id="@+id/comments"
+        style="@style/StatsTextAppearance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:drawableLeftCompat="@drawable/ic_baseline_comment_24"
