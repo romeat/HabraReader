@@ -2,6 +2,7 @@ package com.rprihodko.habrareader.common.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -45,7 +46,7 @@ class PostAdapter(private val onClickListener: OnClickListener) : PagingDataAdap
                 title.text = item.title
                 postDate.text = Utils.formatTime(item.timePublished)
                 val stats = item.stats
-                votes.text = stats.votesCount.toString()
+                formatScore(item.stats.score)
                 comments.text = stats.commentsCount.toString()
                 views.text = stats.readingCount.toStringWithThousands
                 bookmarked.text = stats.favoritesCount.toString()
@@ -55,6 +56,35 @@ class PostAdapter(private val onClickListener: OnClickListener) : PagingDataAdap
                 .transform(CenterInside(), RoundedCorners(10))
                 .placeholder(R.drawable.ic_user_avatar_default_48)
                 .into(binding.avatar)
+        }
+
+        private fun formatScore(score: Int) {
+            formatScoreText(score)
+            formatScoreColor(score)
+        }
+
+        private fun formatScoreText(score: Int) {
+            binding.score.text = score.let{
+                when {
+                    it > 0 -> {
+                        "+$it"
+                    }
+                    else -> it.toString()
+                }
+            }
+        }
+
+        private fun formatScoreColor(score: Int) {
+            val color: Int? = score.let {
+                when {
+                    it > 0 -> { R.color.colorGreen }
+                    it < 0 -> { R.color.colorRed }
+                    else -> null
+                }
+            }
+            color?.let {
+                binding.score.setTextColor(ContextCompat.getColor(itemView.context, it))
+            }
         }
     }
 
