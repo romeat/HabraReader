@@ -46,7 +46,7 @@ class PostAdapter(private val onClickListener: OnClickListener) : PagingDataAdap
                 title.text = item.title
                 postDate.text = Utils.formatTime(item.timePublished)
                 val stats = item.stats
-                formatScore(item.stats.score)
+                formatScore(stats.score)
                 comments.text = stats.commentsCount.toString()
                 views.text = stats.readingCount.toStringWithThousands
                 bookmarked.text = stats.favoritesCount.toString()
