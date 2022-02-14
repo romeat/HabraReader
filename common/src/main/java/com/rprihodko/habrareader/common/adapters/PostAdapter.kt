@@ -77,7 +77,7 @@ class PostAdapter(private val onClickListener: OnClickListener) : PagingDataAdap
         private fun formatScoreColor(score: Int) {
             val color: Int? = score.let {
                 when {
-                    it > 0 -> { R.color.colorGreen }
+                    it >= 0 -> { R.color.colorGreen }
                     it < 0 -> { R.color.colorRed }
                     else -> null
                 }
