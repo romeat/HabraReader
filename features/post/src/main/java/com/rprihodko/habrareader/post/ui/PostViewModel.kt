@@ -7,8 +7,10 @@ import com.rprihodko.habrareader.common.dto.PostPage
 import com.rprihodko.habrareader.post.domain.GetPostUseCase
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import retrofit2.Response
@@ -24,6 +26,11 @@ class PostViewModel @AssistedInject constructor(
     private val _postData = MutableStateFlow<PostUiState>(PostUiState.Loading)
     val postData: StateFlow<PostUiState> = _postData
 
+    private val eventChannel = Channel<Event>(Channel.BUFFERED)
+    val eventsFlow = eventChannel.receiveAsFlow()
+
+    private var authorAlias = ""
+
     init {
         viewModelScope.launch {
             try {
@@ -35,9 +42,16 @@ class PostViewModel @AssistedInject constructor(
         }
     }
 
+    fun onAuthorClick() {
+        viewModelScope.launch {
+            eventChannel.send(Event.NavigateToAuthor(authorAlias))
+        }
+    }
+
     private fun handleResult(response: Response<PostPage>) {
         if(response.isSuccessful) {
             val result = response.body()!!
+            authorAlias = result.author.alias
             _postData.value = PostUiState.Success(result.copy(content = replaceTags(result.content)))
         } else {
             _postData.value = PostUiState.Error(HttpException(response).message())
@@ -78,4 +92,8 @@ class PostViewModel @AssistedInject constructor(
             }
         }
     }
+}
+
+sealed class Event {
+    class NavigateToAuthor(val authorAlias: String) : Event()
 }

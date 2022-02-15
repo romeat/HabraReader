@@ -4,6 +4,7 @@ import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.Html
@@ -21,6 +22,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterInside
@@ -32,10 +34,13 @@ import com.rprihodko.habrareader.common.R
 import com.rprihodko.habrareader.common.Utils
 import com.rprihodko.habrareader.common.Utils.Companion.toStringWithThousands
 import com.rprihodko.habrareader.common.dto.PostPage
+import com.rprihodko.habrareader.common.navigation.ArgNames
 import com.rprihodko.habrareader.post.databinding.FragmentPostBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import org.xml.sax.XMLReader
 import javax.inject.Inject
 
@@ -73,6 +78,17 @@ class PostFragment: Fragment() {
                 }
             }
         }
+
+        binding.authorClickableArea.setOnClickListener { v -> postViewModel.onAuthorClick() }
+
+        postViewModel.eventsFlow
+            .onEach {
+                when(it) {
+                    is Event.NavigateToAuthor -> findNavController().navigate(
+                        Uri.parse(ArgNames.AUTHOR_DEEP_LINK + it.authorAlias))
+                }
+            }.launchIn(viewLifecycleOwner.lifecycleScope)
+
         return binding.root
     }
 
