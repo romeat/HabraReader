@@ -2,7 +2,6 @@ package com.rprihodko.habrareader.post.ui
 
 import android.content.res.Resources
 import android.graphics.Bitmap
-import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -11,14 +10,11 @@ import android.text.Html
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
-import android.text.style.ImageSpan
+import android.text.style.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.toDrawable
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -30,9 +26,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterInside
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.target.CustomTarget
-import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
-import com.google.android.material.snackbar.Snackbar
+import com.rprihodko.habrareader.common.QuoteSpanClass
 import com.rprihodko.habrareader.common.R
 import com.rprihodko.habrareader.common.Utils
 import com.rprihodko.habrareader.common.Utils.Companion.toStringWithThousands
@@ -42,7 +37,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collect
 import org.xml.sax.XMLReader
-import java.time.Duration
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -101,9 +95,10 @@ class PostFragment: Fragment() {
             postDate.text = Utils.formatTime(post.timePublished)
             title.text = HtmlCompat.fromHtml(post.title, HtmlCompat.FROM_HTML_MODE_COMPACT)
 
-            content.text = HtmlCompat.fromHtml(post.content, HtmlCompat.FROM_HTML_MODE_COMPACT, null, PostTagHandler())
+            val styledText = HtmlCompat.fromHtml(post.content, HtmlCompat.FROM_HTML_MODE_LEGACY, null, PostTagHandler())
+            replaceQuoteSpans(styledText as Spannable)
+            content.text = styledText
             content.movementMethod = LinkMovementMethod.getInstance()
-
 
             val stats = post.statistics
             formatScore(stats.score)
@@ -118,9 +113,10 @@ class PostFragment: Fragment() {
             .placeholder(R.drawable.ic_user_avatar_default_48)
             .into(binding.avatar)
 
-        launchGlide()
+        loadImages()
     }
 
+    // dummy object that marks custom tag position
     object Strike {}
 
     inner class PostTagHandler : Html.TagHandler {
@@ -130,34 +126,45 @@ class PostFragment: Fragment() {
             output: Editable?,
             xmlReader: XMLReader?
         ) {
-            if(tag.equals("habra-img")) {
+            if(tag.equals(IMAGE_CUSTOM_TAG)) {
                 if (opening) {
-                    val er = output?.lastIndex?.toString()
-                    val d = output?.length!!
-                    output?.setSpan(Strike, d, d, Spannable.SPAN_MARK_MARK)
+                    output?.apply {
+                        val position = this.length
+                        this.setSpan(Strike, position, position, Spannable.SPAN_MARK_MARK)
+                    }
                 } else {
+                    output?.apply {
+                        val start = this.getSpanEnd(Strike)
+                        val end = this.length
+                        this.removeSpan(Strike)
 
-                    //val ee = output?.lastIndexOf("<figure>")
-                    val b = output?.length!!
-                    val wher = output?.getSpanEnd(Strike)!!
-                    output?.removeSpan(Strike)
-
-                    val imageContent = output?.substring(wher, b)
-
-                    val tag = saveLinks(imageContent)
-                    output?.replace(wher, b, tag)
-                    //val image = ContextCompat.getDrawable(this@PostFragment.requireContext(), R.drawable.ic_baseline_bookmark_24)
-
+                        val imageContent = this.substring(start, end)
+                        val imageTag = saveImageUrl(imageContent)
+                        this.replace(start, end, imageTag)
+                    }
                 }
+            }
 
+            if(tag.equals("hr")) {
+                // TODO insert horizontal line
+            }
+
+            if(tag.equals("ol")) {
+                // TODO add tag support
+                // https://gist.github.com/vincent1086/1ca4df897efcf9bc0a4bda771af5636a
+            }
+
+            if(tag.equals("code")) {
+                // TODO add code formatting
+                val t = tag
             }
         }
 
-        private fun saveLinks(imageContent: String): String {
+        private fun saveImageUrl(imageContent: String): String {
             val srcPattern = "src=\"(https://.*\\..*\\.\\w+)\"[\\s/].*".toRegex()
             val dataSrcPattern = "data-src=\"(https://.*\\..*\\.\\w+)\"[\\s/].*".toRegex()
 
-            var link: String? = if(imageContent.contains("data-src=")) {
+            val link: String? = if(imageContent.contains("data-src=")) {
                 dataSrcPattern.find(imageContent)?.groupValues?.get(1)
             } else {
                 srcPattern.find(imageContent)?.groupValues?.get(1)
@@ -171,18 +178,31 @@ class PostFragment: Fragment() {
         }
     }
 
-    private fun launchGlide() {
+    private fun replaceQuoteSpans(spannable: Spannable)
+    {
+        val quoteSpans: Array<QuoteSpan> =
+            spannable.getSpans(0, spannable.length - 1, QuoteSpan::class.java)
+
+        for (quoteSpan in quoteSpans)
+        {
+            val start: Int = spannable.getSpanStart(quoteSpan)
+            val end: Int = spannable.getSpanEnd(quoteSpan)
+            val flags: Int = spannable.getSpanFlags(quoteSpan)
+            spannable.removeSpan(quoteSpan)
+            spannable.setSpan(
+                QuoteSpanClass(ContextCompat.getColor(requireContext(), R.color.colorBrand), 10f, 10f),
+                start, end, flags
+            )
+        }
+    }
+
+    private fun loadImages() {
         imageUrls.forEach{ link ->
             Glide.with(binding.content)
                 .asBitmap()
                 .load(link)
                 .into(object : CustomTarget<Bitmap>(){
-                    override fun onLoadCleared(placeholder: Drawable?) {
-                        // this is called when imageView is cleared on lifecycle call or for
-                        // some other reason.
-                        // if you are referencing the bitmap somewhere else too other than this imageView
-                        // clear it here as you can no longer have the bitmap
-                    }
+                    override fun onLoadCleared(placeholder: Drawable?) { }
 
                     override fun onResourceReady(
                         resource: Bitmap,
@@ -192,22 +212,18 @@ class PostFragment: Fragment() {
                         val drawable = BitmapDrawable(resources, resource)
 
                         val width = Resources.getSystem().displayMetrics.widthPixels - 50
-
                         val aspectRatio: Float =
                             (drawable.intrinsicWidth.toFloat()) / (drawable.intrinsicHeight.toFloat())
                         val height = width / aspectRatio
 
-                        drawable.setBounds(10, 20, width, height.toInt())
+                        drawable.setBounds(0, 0, width, height.toInt())
 
                         val ssb = SpannableStringBuilder(binding.content.text)
                         val start = binding.content.text.indexOf(tag)
                         ssb.setSpan(ImageSpan(drawable), start, start+tag.length, Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
-                        ssb.setSpan(object : ClickableSpan() {
+                        ssb.setSpan(object : ClickableSpan() { // only for test purposes/upcoming features
                             override fun onClick(widget: View) {
-
-                                // Handle image click
-                                // only for test purposes/upcoming features
-                                //Snackbar.make(widget, "image clicked wowee", Snackbar.LENGTH_SHORT).show()
+                                //Snackbar.make(widget, "image clicked", Snackbar.LENGTH_SHORT).show()
                             }
                         }, start, start+tag.length, Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
                         binding.content.text = ssb

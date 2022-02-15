@@ -1,23 +1,20 @@
 package com.rprihodko.habrareader.post.ui
 
-import android.content.res.Resources
-import android.view.View
-import androidx.core.graphics.drawable.toDrawable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.bumptech.glide.Glide
 import com.rprihodko.habrareader.common.dto.PostPage
 import com.rprihodko.habrareader.post.domain.GetPostUseCase
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import retrofit2.Response
 import java.lang.Exception
+
+const val IMAGE_CUSTOM_TAG = "habra-img"
 
 class PostViewModel @AssistedInject constructor(
     @Assisted private val postId: Int,
@@ -41,11 +38,28 @@ class PostViewModel @AssistedInject constructor(
     private fun handleResult(response: Response<PostPage>) {
         if(response.isSuccessful) {
             val result = response.body()!!
-            // replace fucking img tags before posting success
-            //_postData.value = PostUiState.Success(result)//(result.copy(content = regexer(result.content)))
-            _postData.value = PostUiState.Success(result.copy(content = replacer(result.content)))
+            _postData.value = PostUiState.Success(result.copy(content = replaceTags(result.content)))
         } else {
             _postData.value = PostUiState.Error(HttpException(response).message())
+        }
+    }
+
+    private fun replaceTags(content: String): String {
+
+        // TODO StringBuilder replace does not work for some reason
+        /*
+        val sb = StringBuilder(content)
+        sb.replace("<img ".toRegex(), "<$IMAGE_CUSTOM_TAG>")
+        sb.replace("/><figcaption>".toRegex(), "</$IMAGE_CUSTOM_TAG><figcaption>")
+        sb.replace("data-blurred=\"true\"/>".toRegex(), "</$IMAGE_CUSTOM_TAG>")
+        return sb.toString()
+         */
+
+        with(content) {
+            return this
+                .replace("<img ", "<$IMAGE_CUSTOM_TAG>")
+                .replace("/><figcaption>", "</$IMAGE_CUSTOM_TAG><figcaption>")
+                .replace("data-blurred=\"true\"/>", "</$IMAGE_CUSTOM_TAG>")
         }
     }
 
@@ -63,11 +77,5 @@ class PostViewModel @AssistedInject constructor(
                 return assistedFactory.create(postId) as T
             }
         }
-    }
-
-    private fun replacer(content: String): String {
-        var nc = content.replace("<img ", "<habra-img>")
-        nc = nc.replace("/><figcaption>", "</habra-img><figcaption>")
-        return nc.replace("data-blurred=\"true\"/>", "</habra-img>")
     }
 }
