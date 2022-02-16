@@ -71,21 +71,24 @@ class ArticlesFragment : Fragment() {
             }
             .launchIn(viewLifecycleOwner.lifecycleScope)
 
-        articlesViewModel.filtersState.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                with(binding, {
-                    ratingGroup.isVisible = it.ratingVisible
-                    ratingSelector.check(ratingEnumToId(it.rating))
-                    periodGroup.isVisible = it.periodVisible
-                    periodSelector.check(periodEnumToId(it.period))
-                    showFirstGroup.isVisible = it.sortByVisible
-                    showFirstSelector.check(sortByEnumToId(it.sortBy))
+        viewLifecycleOwner.lifecycleScope.launch{
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                articlesViewModel.filtersState.collectLatest{
+                    with(binding, {
+                        ratingGroup.isVisible = it.ratingVisible
+                        ratingSelector.check(ratingEnumToId(it.rating))
+                        periodGroup.isVisible = it.periodVisible
+                        periodSelector.check(periodEnumToId(it.period))
+                        showFirstGroup.isVisible = it.sortByVisible
+                        showFirstSelector.check(sortByEnumToId(it.sortBy))
 
-                    expandFiltersButton.isChecked = it.toggleButton
-                    expandFiltersButton.text = setFilterDescription(it)
-                })
+                        expandFiltersButton.isChecked = it.toggleButton
+                        expandFiltersButton.text = setFilterDescription(it)
+                    })
+                }
             }
-        })
+        }
+
         return binding.root
     }
 

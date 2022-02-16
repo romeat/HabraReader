@@ -17,6 +17,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -26,10 +28,8 @@ class ArticlesViewModel @Inject constructor(
     private val repository: PostsRepository
 ) : ViewModel(), OnPostListener {
 
-    val filtersState: LiveData<FiltersViewState>
-        get() = _filtersState
-    private val _filtersState = MutableLiveData<FiltersViewState>().apply {
-        value = FiltersViewState(
+    private val _filtersState = MutableStateFlow(
+        FiltersViewState(
             toggleButton = false,
             toggleButtonText = "",
             sortBy = SortBy.Rating,
@@ -39,7 +39,8 @@ class ArticlesViewModel @Inject constructor(
             period = Period.Daily,
             periodVisible = false,
         )
-    }
+    )
+    val filtersState: StateFlow<FiltersViewState> = _filtersState
 
     val posts: Flow<PagingData<PostPreview>> = newPager().flow.cachedIn(viewModelScope)
 
