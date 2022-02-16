@@ -42,6 +42,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.xml.sax.XMLReader
+import java.lang.StringBuilder
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -111,7 +112,12 @@ class PostFragment: Fragment() {
             postDate.text = Utils.formatTime(post.timePublished)
             title.text = HtmlCompat.fromHtml(post.title, HtmlCompat.FROM_HTML_MODE_COMPACT)
 
-            val styledText = HtmlCompat.fromHtml(post.content, HtmlCompat.FROM_HTML_MODE_LEGACY, null, PostTagHandler())
+            val styledText = HtmlCompat.fromHtml(
+                replaceNewlinesAndSpaces(post.content),
+                HtmlCompat.FROM_HTML_MODE_LEGACY,
+                null,
+                PostTagHandler())
+
             replaceQuoteSpans(styledText as Spannable)
             content.text = styledText
             content.movementMethod = LinkMovementMethod.getInstance()
@@ -133,7 +139,10 @@ class PostFragment: Fragment() {
     }
 
     // dummy object that marks custom tag position
-    object Strike {}
+    object ImageMarker {}
+
+    // dummy object that marks <code> tag position
+    object CodeMarker {}
 
     inner class PostTagHandler : Html.TagHandler {
         override fun handleTag(
@@ -146,13 +155,13 @@ class PostFragment: Fragment() {
                 if (opening) {
                     output?.apply {
                         val position = this.length
-                        this.setSpan(Strike, position, position, Spannable.SPAN_MARK_MARK)
+                        this.setSpan(ImageMarker, position, position, Spannable.SPAN_MARK_MARK)
                     }
                 } else {
                     output?.apply {
-                        val start = this.getSpanEnd(Strike)
+                        val start = this.getSpanEnd(ImageMarker)
                         val end = this.length
-                        this.removeSpan(Strike)
+                        this.removeSpan(ImageMarker)
 
                         val imageContent = this.substring(start, end)
                         val imageTag = saveImageUrl(imageContent)
@@ -171,14 +180,25 @@ class PostFragment: Fragment() {
             }
 
             if(tag.equals("code")) {
-                // TODO add code formatting
-                val t = tag
+                if (opening) {
+                    output?.apply {
+                        val position = length
+                        setSpan(CodeMarker, position, position, Spannable.SPAN_MARK_MARK)
+                    }
+                } else {
+                    output?.apply {
+                        val start = getSpanEnd(CodeMarker)
+                        val end = length
+                        removeSpan(CodeMarker)
+                        setSpan(TypefaceSpan("monospace"), start, end, Spannable.SPAN_INCLUSIVE_EXCLUSIVE)
+                    }
+                }
             }
         }
 
         private fun saveImageUrl(imageContent: String): String {
-            val srcPattern = "src=\"(https://.*\\..*\\.\\w+)\"[\\s/].*".toRegex()
-            val dataSrcPattern = "data-src=\"(https://.*\\..*\\.\\w+)\"[\\s/].*".toRegex()
+            val srcPattern = "src=\"(https://.*\\..*\\.\\w+)\"".toRegex()
+            val dataSrcPattern = "data-src=\"(https://.*\\..*\\.\\w+)\"".toRegex()
 
             val link: String? = if(imageContent.contains("data-src=")) {
                 dataSrcPattern.find(imageContent)?.groupValues?.get(1)
@@ -192,6 +212,14 @@ class PostFragment: Fragment() {
             }
             return ""
         }
+    }
+
+    // because FromHtml is stupid and eats spaces
+    private fun replaceNewlinesAndSpaces(content: String): String {
+        val sb = StringBuilder(content)
+        return sb.replace("\n".toRegex(), "<br>" )
+            .replace("   ".toRegex(), "&nbsp;&nbsp;&nbsp;")
+            .replace("  ".toRegex(), "&nbsp;&nbsp;")
     }
 
     private fun replaceQuoteSpans(spannable: Spannable)
