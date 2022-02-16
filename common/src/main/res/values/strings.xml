@@ -18,4 +18,30 @@
     <string name="subs_label">Подписчики</string>
     <string name="karma_label">Карма</string>
     <string name="posts_label">Посты</string>
+    
+    <string name="show_first_filter_label">Сначала показывать</string>
+    <string name="new_posts_filter_label">Новые</string>
+    <string name="best_posts_filter_label">Лучшие</string>
+    <string name="period_filter_label">Период</string>
+    <string name="day_filter_label">Сутки</string>
+    <string name="week_filter_label">Неделя</string>
+    <string name="month_filter_label">Месяц</string>
+    <string name="year_filter_label">Год</string>
+    <string name="alltime_filter_label">Всё время</string>
+    <string name="rating_limit_filter_label">Порог рейтинга</string>
+    <string name="any_rating_filter_label">Все</string>
+    <string name="zero_plus_filter_label">0+</string>
+    <string name="ten_plus_filter_label">10+</string>
+    <string name="twentyfive_plus_filter_label">25+</string>
+
+    <string name="any_rating_description_label">Все подряд</string>
+    <string name="zero_plus_description_label">Новые с рейтингом 0+</string>
+    <string name="ten_plus_description_label">Новые с рейтингом 10+</string>
+    <string name="twentyfive_plus_description_label">Новые с рейтингом 25+</string>
+
+    <string name="best_of_day_description_label">Лучшие за сутки</string>
+    <string name="best_of_week_description_label">Лучшие за неделю</string>
+    <string name="best_of_month_description_label">Лучшие за месяц</string>
+    <string name="best_of_year_description_label">Лучшие за год</string>
+    <string name="best_of_alltime_description_label">Лучшие за всё время</string>
 </resources>

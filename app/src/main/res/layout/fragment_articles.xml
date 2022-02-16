@@ -7,6 +7,7 @@
 
     <ToggleButton style="@style/ToggleButtonStyle"
         android:id="@+id/expandFiltersButton"
+        android:textAppearance="@style/SubtitleTextAppearance"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,9 +21,11 @@
 
     <TextView style="@style/ElevatedLayout"
         android:id="@+id/showFirstText"
+        android:textAppearance="@style/SubtitleTextAppearance"
+        android:paddingHorizontal="@dimen/margin_4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Сначала показывать"
+        android:text="@string/show_first_filter_label"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/expandFiltersButton" />
 
@@ -37,10 +40,10 @@
         <androidx.appcompat.widget.AppCompatRadioButton style="@style/RadioButtonStyle"
             android:id="@+id/newPostsRadioButton"
             android:checked="true"
-            android:text="Новые"/>
+            android:text="@string/new_posts_filter_label"/>
         <androidx.appcompat.widget.AppCompatRadioButton style="@style/RadioButtonStyle"
             android:id="@+id/bestPostsRadioButton"
-            android:text="Лучшие" />
+            android:text="@string/best_posts_filter_label" />
     </RadioGroup>
 
 
@@ -53,9 +56,11 @@
 
     <TextView style="@style/ElevatedLayout"
         android:id="@+id/periodSelectorText"
+        android:textAppearance="@style/SubtitleTextAppearance"
+        android:paddingHorizontal="@dimen/margin_4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Период"
+        android:text="@string/period_filter_label"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/showFirstSelector" />
 
@@ -70,19 +75,19 @@
         <androidx.appcompat.widget.AppCompatRadioButton style="@style/RadioButtonStyle"
             android:id="@+id/dailyRadioButton"
             android:checked="true"
-            android:text="Сутки" />
+            android:text="@string/day_filter_label" />
         <androidx.appcompat.widget.AppCompatRadioButton style="@style/RadioButtonStyle"
             android:id="@+id/weeklyRadioButton"
-            android:text="Неделя"/>
+            android:text="@string/week_filter_label"/>
         <androidx.appcompat.widget.AppCompatRadioButton style="@style/RadioButtonStyle"
             android:id="@+id/monthlyRadioButton"
-            android:text="Месяц" />
+            android:text="@string/month_filter_label" />
         <androidx.appcompat.widget.AppCompatRadioButton style="@style/RadioButtonStyle"
             android:id="@+id/yearlyRadioButton"
-            android:text="Год" />
+            android:text="@string/year_filter_label" />
         <androidx.appcompat.widget.AppCompatRadioButton style="@style/RadioButtonStyle"
             android:id="@+id/allTimeRadioButton"
-            android:text="Всё время"/>
+            android:text="@string/alltime_filter_label"/>
     </RadioGroup>
 
 
@@ -95,9 +100,11 @@
 
     <TextView style="@style/ElevatedLayout"
         android:id="@+id/ratingSelectorText"
+        android:textAppearance="@style/SubtitleTextAppearance"
+        android:paddingHorizontal="@dimen/margin_4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Порог рейтинга"
+        android:text="@string/rating_limit_filter_label"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/showFirstSelector" />
 
@@ -111,16 +118,16 @@
         <androidx.appcompat.widget.AppCompatRadioButton style="@style/RadioButtonExtraPaddingStyle"
             android:id="@+id/anyRatingRadioButton"
             android:checked="true"
-            android:text="Все" />
+            android:text="@string/any_rating_filter_label" />
         <androidx.appcompat.widget.AppCompatRadioButton style="@style/RadioButtonExtraPaddingStyle"
             android:id="@+id/zeroPlusRadioButton"
-            android:text="0+"/>
+            android:text="@string/zero_plus_filter_label"/>
         <androidx.appcompat.widget.AppCompatRadioButton style="@style/RadioButtonExtraPaddingStyle"
             android:id="@+id/tenPlusRadioButton"
-            android:text="10+" />
+            android:text="@string/ten_plus_filter_label" />
         <androidx.appcompat.widget.AppCompatRadioButton style="@style/RadioButtonExtraPaddingStyle"
             android:id="@+id/twentyFivePlusRadioButton"
-            android:text="25+" />
+            android:text="@string/twentyfive_plus_filter_label" />
     </RadioGroup>
 
     <androidx.recyclerview.widget.RecyclerView style="@style/PostRecyclerBackground"

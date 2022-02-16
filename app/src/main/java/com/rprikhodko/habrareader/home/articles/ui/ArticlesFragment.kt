@@ -82,10 +82,35 @@ class ArticlesFragment : Fragment() {
                     showFirstSelector.check(sortByEnumToId(it.sortBy))
 
                     expandFiltersButton.isChecked = it.toggleButton
+                    expandFiltersButton.text = setFilterDescription(it)
                 })
             }
         })
         return binding.root
+    }
+
+    private fun setFilterDescription(filtersState: ArticlesViewModel.FiltersViewState): CharSequence {
+
+        val desc: Int = when(filtersState.sortBy) {
+            SortBy.Period -> {
+                when(filtersState.period) {
+                    Period.Daily -> R.string.best_of_day_description_label
+                    Period.Weekly -> R.string.best_of_week_description_label
+                    Period.Monthly -> R.string.best_of_month_description_label
+                    Period.Yearly -> R.string.best_of_year_description_label
+                    Period.AllTime -> R.string.best_of_alltime_description_label
+                }
+            }
+            SortBy.Rating -> {
+                when(filtersState.rating) {
+                    Rating.AnyRating -> R.string.any_rating_description_label
+                    Rating.ZeroPlus -> R.string.zero_plus_description_label
+                    Rating.TenPlus -> R.string.ten_plus_description_label
+                    Rating.TwentyFivePlus -> R.string.twentyfive_plus_description_label
+                }
+            }
+        }
+        return getString(desc)
     }
 
     override fun onResume() {
