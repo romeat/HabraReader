@@ -56,12 +56,12 @@ class ArticlesViewModel @Inject constructor(
 
     private fun newSource(): PagingSource<Int, PostPreview> {
         pagingSource = ArticlesPagingSource(repository,
-            ArticlesPagingSource.RepositoryParams(_filtersState.value!!.sortBy, _filtersState.value!!.period, _filtersState.value!!.rating))
+            ArticlesPagingSource.RepositoryParams(_filtersState.value.sortBy, _filtersState.value.period, _filtersState.value.rating))
             return pagingSource
     }
 
     fun onSortByRadio(sortBy: SortBy) {
-        _filtersState.value = _filtersState.value!!.copy(
+        _filtersState.value = _filtersState.value.copy(
             sortBy = sortBy,
             ratingVisible = when(sortBy) {
                 SortBy.Rating -> true
@@ -76,31 +76,31 @@ class ArticlesViewModel @Inject constructor(
     }
 
     fun onRatingRadio(rating: Rating) {
-        _filtersState.value = _filtersState.value!!.copy(rating = rating)
+        _filtersState.value = _filtersState.value.copy(rating = rating)
         onFiltersValueChange()
     }
 
     fun onPeriodRadio(period: Period) {
-        _filtersState.value = _filtersState.value!!.copy(period = period)
+        _filtersState.value = _filtersState.value.copy(period = period)
         onFiltersValueChange()
     }
 
     fun onFiltersToggle() {
-        if(_filtersState.value!!.toggleButton) {
-            _filtersState.value = _filtersState.value!!.copy(
+        if(_filtersState.value.toggleButton) {
+            _filtersState.value = _filtersState.value.copy(
                 sortByVisible = false,
                 periodVisible = false,
                 ratingVisible = false,
                 toggleButton = false
             )
         } else {
-            _filtersState.value = _filtersState.value!!.copy(
+            _filtersState.value = _filtersState.value.copy(
                 sortByVisible = true,
-                ratingVisible = when(_filtersState.value!!.sortBy) {
+                ratingVisible = when(_filtersState.value.sortBy) {
                     SortBy.Rating -> true
                     SortBy.Period -> false
                 },
-                periodVisible = when(_filtersState.value!!.sortBy) {
+                periodVisible = when(_filtersState.value.sortBy) {
                     SortBy.Rating -> false
                     SortBy.Period -> true
                 },
