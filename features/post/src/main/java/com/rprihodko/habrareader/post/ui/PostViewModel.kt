@@ -59,21 +59,10 @@ class PostViewModel @AssistedInject constructor(
     }
 
     private fun replaceTags(content: String): String {
-
-        // TODO StringBuilder replace does not work for some reason
-        /*
-        val sb = StringBuilder(content)
-        sb.replace("<img ".toRegex(), "<$IMAGE_CUSTOM_TAG>")
-        sb.replace("/><figcaption>".toRegex(), "</$IMAGE_CUSTOM_TAG><figcaption>")
-        sb.replace("data-blurred=\"true\"/>".toRegex(), "</$IMAGE_CUSTOM_TAG>")
-        return sb.toString()
-         */
-
         with(content) {
             return this
                 .replace("<img ", "<$IMAGE_CUSTOM_TAG>")
-                .replace("/><figcaption>", "</$IMAGE_CUSTOM_TAG><figcaption>")
-                .replace("data-blurred=\"true\"/>", "</$IMAGE_CUSTOM_TAG>")
+                .replace("\"/>", "\"</$IMAGE_CUSTOM_TAG>")
         }
     }
 
