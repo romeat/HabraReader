@@ -70,7 +70,7 @@ class ArticlesFragment : Fragment() {
                     is Event.RefreshAdapter -> binding.postList.scrollToPosition(0)
                     is Event.NavigateToPost -> {
                         findNavController().navigate(
-                            R.id.post, bundleOf("postId" to it.postId))
+                            R.id.post, bundleOf(ArgNames.POST_ID_ARG_NAME to it.postId))
                             // for some unknown reason deep link does not work from home stack
                             //Uri.parse(ArgNames.POST_DEEP_LINK + it.postId))
                     }
