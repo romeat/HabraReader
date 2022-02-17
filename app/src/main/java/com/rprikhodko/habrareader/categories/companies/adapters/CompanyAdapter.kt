@@ -12,6 +12,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
 
 import com.rprihodko.habrareader.common.Utils.Companion.toStringWithThousands
+import com.rprihodko.habrareader.common.Utils.Companion.withHttpsPrefix
 import com.rprihodko.habrareader.common.dto.CompanyPreview
 import com.rprikhodko.habrareader.databinding.CompanyItemBinding
 
@@ -41,7 +42,7 @@ class CompanyAdapter(private val onClickListener: OnClickListener) : PagingDataA
                 description.text = item.description?.let { HtmlCompat.fromHtml(it, HtmlCompat.FROM_HTML_MODE_COMPACT) } ?: description.hint
             }
             Glide.with(binding.avatar)
-                .load("https:".plus(item.imageUrl))
+                .load(item.imageUrl.withHttpsPrefix)
                 .transform(CenterInside(), RoundedCorners(10))
                 .into(binding.avatar)
         }

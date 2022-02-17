@@ -19,6 +19,7 @@ import androidx.paging.LoadState
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterInside
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.rprihodko.habrareader.common.Utils.Companion.withHttpsPrefix
 import com.rprihodko.habrareader.common.adapters.PostAdapter
 import com.rprihodko.habrareader.common.dto.HubProfile
 import com.rprihodko.habrareader.common.navigation.ArgNames
@@ -102,7 +103,7 @@ class HubFragment : Fragment() {
             hubDescription.text = hubProfile.descriptionHtml
         }
         Glide.with(binding.avatar)
-            .load("https:".plus(hubProfile.imageUrl))
+            .load(hubProfile.imageUrl?.withHttpsPrefix)
             .transform(CenterInside(), RoundedCorners(10))
             .into(binding.avatar)
     }

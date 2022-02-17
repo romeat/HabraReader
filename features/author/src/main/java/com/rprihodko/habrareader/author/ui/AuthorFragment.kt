@@ -20,6 +20,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterInside
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.rprihodko.habrareader.author.R
 import com.rprihodko.habrareader.author.databinding.FragmentAuthorBinding
+import com.rprihodko.habrareader.common.Utils.Companion.withHttpsPrefix
 import com.rprihodko.habrareader.common.dto.AuthorProfile
 import com.rprihodko.habrareader.common.adapters.PostAdapter
 import com.rprihodko.habrareader.common.navigation.ArgNames
@@ -105,7 +106,7 @@ class AuthorFragment : Fragment() {
             postsCount.text = profile.counterStats.postCount.toString()
         }
         Glide.with(binding.avatar)
-            .load("https:".plus(profile.avatarUrl))
+            .load(profile.avatarUrl?.withHttpsPrefix)
             .transform(CenterInside(), RoundedCorners(10))
             .placeholder(com.rprihodko.habrareader.common.R.drawable.ic_user_avatar_default_48)
             .into(binding.avatar)

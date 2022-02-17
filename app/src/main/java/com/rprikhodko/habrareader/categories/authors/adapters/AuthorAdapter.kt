@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterInside
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.rprihodko.habrareader.common.Utils.Companion.withHttpsPrefix
 import com.rprihodko.habrareader.common.dto.AuthorPreview
 import com.rprikhodko.habrareader.R
 import com.rprikhodko.habrareader.databinding.AuthorItemBinding
@@ -44,7 +45,7 @@ class AuthorAdapter(private val onClickListener: OnClickListener) : PagingDataAd
                 score.text = item.scoreStats.score.toString()
             }
             Glide.with(binding.avatar)
-                .load("https:".plus(item.avatarUrl))
+                .load(item.avatarUrl?.withHttpsPrefix)
                 .transform(CenterInside(), RoundedCorners(10))
                 .placeholder(R.drawable.ic_user_avatar_default_48)
                 .into(binding.avatar)

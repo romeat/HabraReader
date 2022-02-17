@@ -54,6 +54,13 @@ class Utils {
             } else {
                 "%.1f".format(this.toDouble()/1000) + "K"
             }
+
+        val String.withHttpsPrefix: String
+        get() = if(!this.startsWith("https:")) {
+            "https:$this"
+        } else {
+            this
+        }
     }
 
 }

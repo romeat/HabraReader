@@ -33,6 +33,7 @@ import com.rprihodko.habrareader.common.QuoteSpanClass
 import com.rprihodko.habrareader.common.R
 import com.rprihodko.habrareader.common.Utils
 import com.rprihodko.habrareader.common.Utils.Companion.toStringWithThousands
+import com.rprihodko.habrareader.common.Utils.Companion.withHttpsPrefix
 import com.rprihodko.habrareader.common.dto.PostPage
 import com.rprihodko.habrareader.common.navigation.ArgNames
 import com.rprihodko.habrareader.post.databinding.FragmentPostBinding
@@ -113,7 +114,7 @@ class PostFragment: Fragment() {
             title.text = HtmlCompat.fromHtml(post.title, HtmlCompat.FROM_HTML_MODE_COMPACT)
 
             val styledText = HtmlCompat.fromHtml(
-                replaceNewlinesAndSpaces(post.content),
+                replaceSpaces(post.content),
                 HtmlCompat.FROM_HTML_MODE_LEGACY,
                 null,
                 PostTagHandler())
@@ -130,7 +131,7 @@ class PostFragment: Fragment() {
 
         }
         Glide.with(binding.avatar)
-            .load("https:".plus(post.author.avatarUrl))
+            .load(post.author.avatarUrl?.withHttpsPrefix)
             .transform(CenterInside(), RoundedCorners(10))
             .placeholder(R.drawable.ic_user_avatar_default_48)
             .into(binding.avatar)
@@ -215,7 +216,7 @@ class PostFragment: Fragment() {
     }
 
     // because FromHtml is stupid and eats spaces
-    private fun replaceNewlinesAndSpaces(content: String): String {
+    private fun replaceSpaces(content: String): String {
         val sb = StringBuilder(content)
         return sb.replace("   ".toRegex(), "&nbsp;&nbsp;&nbsp;")
             .replace("  ".toRegex(), "&nbsp;&nbsp;")

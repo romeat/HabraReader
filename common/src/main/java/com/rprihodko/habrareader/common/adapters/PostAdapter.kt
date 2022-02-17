@@ -13,6 +13,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.rprihodko.habrareader.common.R
 import com.rprihodko.habrareader.common.Utils
 import com.rprihodko.habrareader.common.Utils.Companion.toStringWithThousands
+import com.rprihodko.habrareader.common.Utils.Companion.withHttpsPrefix
 import com.rprihodko.habrareader.common.databinding.PostItemBinding
 import com.rprihodko.habrareader.common.dto.PostPreview
 
@@ -52,7 +53,7 @@ class PostAdapter(private val onClickListener: OnClickListener) : PagingDataAdap
                 bookmarked.text = stats.favoritesCount.toString()
             }
             Glide.with(binding.avatar)
-                .load("https:".plus(item.author.avatarUrl))
+                .load(item.author.avatarUrl.withHttpsPrefix)
                 .transform(CenterInside(), RoundedCorners(10))
                 .placeholder(R.drawable.ic_user_avatar_default_48)
                 .into(binding.avatar)

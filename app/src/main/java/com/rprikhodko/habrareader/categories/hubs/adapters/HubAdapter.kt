@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.rprihodko.habrareader.common.R
 import com.rprihodko.habrareader.common.Utils.Companion.toStringWithThousands
+import com.rprihodko.habrareader.common.Utils.Companion.withHttpsPrefix
 import com.rprihodko.habrareader.common.dto.HubPreview
 import com.rprikhodko.habrareader.databinding.HubItemBinding
 
@@ -36,7 +37,7 @@ class HubAdapter(private val onClickListener: OnClickListener) : PagingDataAdapt
                 subscribers.text = item.statistics.subscribersCount.toStringWithThousands
             }
             Glide.with(binding.avatar)
-                .load("https:".plus(item.imageUrl))
+                .load(item.imageUrl.withHttpsPrefix)
                 .into(binding.avatar)
         }
     }
