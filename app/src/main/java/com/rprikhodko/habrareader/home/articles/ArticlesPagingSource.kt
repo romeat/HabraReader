@@ -36,9 +36,10 @@ class ArticlesPagingSource constructor(
                 val pagesCount = response.body()!!.pagesCount
                 val nextPageNumber = if (articles.isEmpty() || pagesCount == 1 || pageNumber == pagesCount) null else pageNumber + 1
                 val prevPageNumber = if (pageNumber > 1) pageNumber - 1 else null
+                val filteredResult = articles.values.toList().filter{ it.postType == "article" }
                 val sortedResult = when(repoParams.sortBy) {
-                    SortBy.Rating -> articles.values.toList().filter{ it.postType == "article" }.sortedByDescending{ it.timePublished }
-                    SortBy.Period -> articles.values.toList().filter{ it.postType == "article" }.sortedByDescending{ it.stats.score }
+                    SortBy.Rating -> filteredResult.sortedByDescending{ it.timePublished }
+                    SortBy.Period -> filteredResult.sortedByDescending{ it.stats.score }
                 }
                 return LoadResult.Page(sortedResult, prevPageNumber, nextPageNumber)
             } else {
