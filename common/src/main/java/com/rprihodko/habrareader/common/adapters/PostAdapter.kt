@@ -53,7 +53,7 @@ class PostAdapter(private val onClickListener: OnClickListener) : PagingDataAdap
                 bookmarked.text = stats.favoritesCount.toString()
             }
             Glide.with(binding.avatar)
-                .load(item.author.avatarUrl.withHttpsPrefix)
+                .load(item.author.avatarUrl?.withHttpsPrefix)
                 .transform(CenterInside(), RoundedCorners(10))
                 .placeholder(R.drawable.ic_user_avatar_default_48)
                 .into(binding.avatar)

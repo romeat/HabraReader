@@ -46,4 +46,5 @@
     <string name="best_of_alltime_description_label">Лучшие за всё время</string>
     <string name="failed_to_load_posts_message">Не удалось загрузить посты</string>
     <string name="failed_to_load_data_message">Не удалось загрузить данные</string>
+    <string name="failed_to_load_post_message">Не удалось загрузить пост</string>
 </resources>

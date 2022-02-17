@@ -17,6 +17,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -100,15 +101,26 @@ class PostFragment: Fragment() {
     }
 
     private fun showError() {
-
+        with(binding) {
+            postContent.isVisible = false
+            errorLabel.isVisible = true
+            progressBar.isVisible = false
+        }
     }
 
     private fun showLoading() {
-
+        with(binding) {
+            postContent.isVisible = false
+            errorLabel.isVisible = false
+            progressBar.isVisible = true
+        }
     }
 
     private fun showData(post: PostPage) {
         with(binding) {
+            postContent.isVisible = true
+            errorLabel.isVisible = false
+            progressBar.isVisible = false
             author.text = post.author.alias
             postDate.text = Utils.formatTime(post.timePublished)
             title.text = HtmlCompat.fromHtml(post.title, HtmlCompat.FROM_HTML_MODE_COMPACT)
