@@ -217,8 +217,7 @@ class PostFragment: Fragment() {
     // because FromHtml is stupid and eats spaces
     private fun replaceNewlinesAndSpaces(content: String): String {
         val sb = StringBuilder(content)
-        return sb.replace("\n".toRegex(), "<br>" )
-            .replace("   ".toRegex(), "&nbsp;&nbsp;&nbsp;")
+        return sb.replace("   ".toRegex(), "&nbsp;&nbsp;&nbsp;")
             .replace("  ".toRegex(), "&nbsp;&nbsp;")
     }
 
