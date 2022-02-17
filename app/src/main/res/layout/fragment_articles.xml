@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ToggleButton style="@style/ToggleButtonStyle"
+    <ToggleButton
         android:id="@+id/expandFiltersButton"
+        style="@style/ToggleButtonStyle"
         android:textAppearance="@style/SubtitleTextAppearance"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -19,8 +19,9 @@
         android:layout_height="wrap_content"
         app:constraint_referenced_ids="showFirstText,showFirstSelector" />
 
-    <TextView style="@style/ElevatedLayout"
+    <TextView
         android:id="@+id/showFirstText"
+        style="@style/ElevatedLayout"
         android:textAppearance="@style/SubtitleTextAppearance"
         android:paddingHorizontal="@dimen/margin_4dp"
         android:layout_width="match_parent"
@@ -29,10 +30,11 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/expandFiltersButton" />
 
-    <RadioGroup style="@style/ElevatedLayout"
+    <RadioGroup
         android:id="@+id/showFirstSelector"
+        style="@style/ElevatedLayout"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="@dimen/radio_group_height"
         android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/showFirstText">
@@ -54,8 +56,9 @@
         android:layout_height="wrap_content"
         app:constraint_referenced_ids="periodSelector, periodSelectorText"/>
 
-    <TextView style="@style/ElevatedLayout"
+    <TextView
         android:id="@+id/periodSelectorText"
+        style="@style/ElevatedLayout"
         android:textAppearance="@style/SubtitleTextAppearance"
         android:paddingHorizontal="@dimen/margin_4dp"
         android:layout_width="match_parent"
@@ -64,10 +67,11 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/showFirstSelector" />
 
-    <RadioGroup style="@style/ElevatedLayout"
+    <RadioGroup
         android:id="@+id/periodSelector"
+        style="@style/ElevatedLayout"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="@dimen/radio_group_height"
         android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/periodSelectorText">
@@ -98,8 +102,9 @@
         android:layout_height="wrap_content"
         app:constraint_referenced_ids="ratingSelector, ratingSelectorText"/>
 
-    <TextView style="@style/ElevatedLayout"
+    <TextView
         android:id="@+id/ratingSelectorText"
+        style="@style/ElevatedLayout"
         android:textAppearance="@style/SubtitleTextAppearance"
         android:paddingHorizontal="@dimen/margin_4dp"
         android:layout_width="match_parent"
@@ -108,10 +113,11 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/showFirstSelector" />
 
-    <RadioGroup style="@style/ElevatedLayout"
+    <RadioGroup
         android:id="@+id/ratingSelector"
+        style="@style/ElevatedLayout"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="@dimen/radio_group_height"
         android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ratingSelectorText">
@@ -130,8 +136,9 @@
             android:text="@string/twentyfive_plus_filter_label" />
     </RadioGroup>
 
-    <androidx.recyclerview.widget.RecyclerView style="@style/PostRecyclerBackground"
-        android:id="@+id/post_list"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/postList"
+        style="@style/PostRecyclerBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipToPadding="false"
@@ -145,5 +152,28 @@
         app:layout_constraintTop_toBottomOf="@+id/expandFiltersButton"
         app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/post_item" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/expandFiltersButton" />
+
+    <TextView
+        android:id="@+id/errorLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/failed_to_load_posts_message"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/expandFiltersButton"  />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

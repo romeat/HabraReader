@@ -1,10 +1,13 @@
 package com.rprihodko.habrareader.hub.ui
 
 import android.net.Uri
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.motion.utils.ViewState
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -12,6 +15,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.paging.LoadState
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterInside
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -53,7 +57,13 @@ class HubFragment : Fragment() {
     ): View {
         _binding = FragmentHubBinding.inflate(inflater, container, false)
 
-        binding.postList.adapter = adapter
+        binding.posts.postList.adapter = adapter
+
+        adapter.addLoadStateListener { state ->
+            binding.posts.progressBar.isVisible = state.refresh == LoadState.Loading
+            binding.posts.postList.isVisible = state.refresh is LoadState.NotLoading
+            binding.posts.errorLabel.isVisible = state.refresh is LoadState.Error
+        }
 
         viewLifecycleOwner.lifecycleScope.launch{
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {

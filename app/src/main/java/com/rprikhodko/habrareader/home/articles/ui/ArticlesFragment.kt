@@ -14,6 +14,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.RecyclerView
 import com.rprihodko.habrareader.common.adapters.PostAdapter
 import com.rprihodko.habrareader.common.navigation.ArgNames
@@ -48,6 +49,12 @@ class ArticlesFragment : Fragment() {
         _binding = FragmentArticlesBinding.inflate(inflater, container, false)
 
         binding.postList.adapter = adapter
+
+        adapter.addLoadStateListener { state ->
+            binding.progressBar.isVisible = state.refresh == LoadState.Loading
+            binding.postList.isVisible = state.refresh is LoadState.NotLoading
+            binding.errorLabel.isVisible = state.refresh is LoadState.Error
+        }
 
         viewLifecycleOwner.lifecycleScope.launch{
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {

@@ -15,6 +15,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.paging.LoadState
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterInside
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -57,7 +58,13 @@ class CompanyFragment : Fragment() {
     ): View {
         _binding = FragmentCompanyBinding.inflate(inflater, container, false)
 
-        binding.postList.adapter = adapter
+        binding.posts.postList.adapter = adapter
+
+        adapter.addLoadStateListener { state ->
+            binding.posts.progressBar.isVisible = state.refresh == LoadState.Loading
+            binding.posts.postList.isVisible = state.refresh is LoadState.NotLoading
+            binding.posts.errorLabel.isVisible = state.refresh is LoadState.Error
+        }
 
         viewLifecycleOwner.lifecycleScope.launch{
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {

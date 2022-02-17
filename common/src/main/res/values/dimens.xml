@@ -16,4 +16,7 @@
 
     <dimen name="avatar_size_small">24dp</dimen>
     <dimen name="avatar_size_medium">48dp</dimen>
+
+    <dimen name="radio_group_height">40dp</dimen>
+    <dimen name="tab_layout_height">48dp</dimen>
 </resources>

@@ -6,16 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
 import com.rprihodko.habrareader.common.navigation.ArgNames
 import com.rprikhodko.habrareader.R
 import com.rprikhodko.habrareader.categories.companies.adapters.CompanyAdapter
-import com.rprikhodko.habrareader.databinding.FragmentCompaniesBinding
+import com.rprikhodko.habrareader.databinding.FragmentCategoryCommonBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.launchIn
@@ -26,7 +28,7 @@ import kotlinx.coroutines.launch
 class CompaniesFragment : Fragment() {
 
     private val viewModel by viewModels<CompaniesViewModel>()
-    private var _binding: FragmentCompaniesBinding? = null
+    private var _binding: FragmentCategoryCommonBinding? = null
     private val binding get() = _binding!!
 
     private val adapter by lazy(LazyThreadSafetyMode.NONE) {
@@ -38,9 +40,16 @@ class CompaniesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentCompaniesBinding.inflate(inflater, container, false)
+        _binding = FragmentCategoryCommonBinding.inflate(inflater, container, false)
 
-        binding.companiesList.adapter = adapter
+        binding.itemList.adapter = adapter
+
+        adapter.addLoadStateListener { state ->
+            binding.progressBar.isVisible = state.refresh == LoadState.Loading
+            binding.itemList.isVisible = state.refresh is LoadState.NotLoading
+            binding.errorLabel.isVisible = state.refresh is LoadState.Error
+        }
+
         viewLifecycleOwner.lifecycleScope.launch{
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.companies.collectLatest { value ->

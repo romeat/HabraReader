@@ -44,4 +44,6 @@
     <string name="best_of_month_description_label">Лучшие за месяц</string>
     <string name="best_of_year_description_label">Лучшие за год</string>
     <string name="best_of_alltime_description_label">Лучшие за всё время</string>
+    <string name="failed_to_load_posts_message">Не удалось загрузить посты</string>
+    <string name="failed_to_load_data_message">Не удалось загрузить данные</string>
 </resources>
