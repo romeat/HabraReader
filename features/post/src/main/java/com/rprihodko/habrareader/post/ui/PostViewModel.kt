@@ -83,6 +83,12 @@ class PostViewModel @AssistedInject constructor(
     }
 }
 
+sealed class PostUiState {
+    object Loading: PostUiState()
+    data class Success(val post: PostPage): PostUiState()
+    data class Error(val message: String): PostUiState()
+}
+
 sealed class Event {
     class NavigateToAuthor(val authorAlias: String) : Event()
 }

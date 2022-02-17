@@ -39,3 +39,7 @@ class CompaniesViewModel @Inject constructor(
         }
     }
 }
+
+sealed class Event {
+    class NavigateToCompany(val companyAlias: String) : Event()
+}

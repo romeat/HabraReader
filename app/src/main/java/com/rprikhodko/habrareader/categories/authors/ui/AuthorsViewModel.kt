@@ -39,3 +39,7 @@ class AuthorsViewModel @Inject constructor(
         }
     }
 }
+
+sealed class Event {
+    class NavigateToAuthor(val authorAlias: String) : Event()
+}

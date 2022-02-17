@@ -136,3 +136,8 @@ class ArticlesViewModel @Inject constructor(
         }
     }
 }
+
+sealed class Event {
+    object RefreshAdapter: Event()
+    class NavigateToPost(val postId: Int) : Event()
+}

@@ -39,3 +39,7 @@ class HubsViewModel @Inject constructor(
         }
     }
 }
+
+sealed class Event {
+    class NavigateToHub(val hubAlias: String) : Event()
+}

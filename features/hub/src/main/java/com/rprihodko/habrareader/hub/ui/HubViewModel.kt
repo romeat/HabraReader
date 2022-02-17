@@ -88,3 +88,13 @@ class HubViewModel  @AssistedInject constructor(
         }
     }
 }
+
+sealed class HubProfileUiState {
+    object Loading: HubProfileUiState()
+    data class Success(val hub: HubProfile): HubProfileUiState()
+    data class Error(val message: String): HubProfileUiState()
+}
+
+sealed class Event {
+    class NavigateToPost(val postId: Int) : Event()
+}
