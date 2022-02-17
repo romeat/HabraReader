@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">habrareader</string>
+    <string name="app_name">HabraReader</string>
     <string name="title_home">Главная</string>
     <string name="title_categories">Категории</string>
     <string name="title_favourites">Избранное</string>
