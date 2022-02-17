@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="category_item_padding">10dp</dimen>
+    <dimen name="category_item_padding_vertical">8dp</dimen>
+    <dimen name="category_item_padding_horizontal">10dp</dimen>
     <dimen name="post_item_padding">8dp</dimen>
     <dimen name="post_item_margin_vertical">8dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
