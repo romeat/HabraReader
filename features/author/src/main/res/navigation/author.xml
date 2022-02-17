@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/authorFragment"
         android:name="com.rprihodko.habrareader.author.ui.AuthorFragment"
-        android:label="ProfileFragment">
+        android:label="{authorAlias}">
         <argument
             android:name="authorAlias"
             app:argType="string" />

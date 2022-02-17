@@ -13,6 +13,6 @@
     <fragment
         android:id="@+id/navigation_categories"
         android:name="com.rprikhodko.habrareader.categories.ui.CategoriesFragment"
-        android:label="Categories"
+        android:label="@string/title_categories"
         tools:layout="@layout/fragment_categories" />
 </navigation>

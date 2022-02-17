@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/postFragment"
         android:name="com.rprihodko.habrareader.post.ui.PostFragment"
-        android:label="Post">
+        android:label="{postId}">
         <argument
             android:name="postId"
             app:argType="integer" />

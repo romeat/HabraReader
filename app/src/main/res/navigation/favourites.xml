@@ -7,5 +7,5 @@
     <fragment
         android:id="@+id/navigation_favourites"
         android:name="com.rprikhodko.habrareader.favourites.ui.FavouritesFragment"
-        android:label="FavouritesFragment" />
+        android:label="@string/title_favourites" />
 </navigation>
