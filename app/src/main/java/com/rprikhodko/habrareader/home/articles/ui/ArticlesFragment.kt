@@ -81,7 +81,7 @@ class ArticlesFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch{
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 articlesViewModel.filtersState.collectLatest{
-                    with(binding, {
+                    with(binding) {
                         ratingGroup.isVisible = it.ratingVisible
                         ratingSelector.check(ratingEnumToId(it.rating))
                         periodGroup.isVisible = it.periodVisible
@@ -91,7 +91,7 @@ class ArticlesFragment : Fragment() {
 
                         expandFiltersButton.isChecked = it.toggleButton
                         expandFiltersButton.text = setFilterDescription(it)
-                    })
+                    }
                 }
             }
         }
@@ -134,7 +134,7 @@ class ArticlesFragment : Fragment() {
     }
 
     private fun setListeners() {
-        with(binding, {
+        with(binding) {
             expandFiltersButton.setOnClickListener {
                 articlesViewModel.onFiltersToggle()
             }
@@ -147,27 +147,32 @@ class ArticlesFragment : Fragment() {
             ratingSelector.setOnCheckedChangeListener { group, checkedId ->
                 articlesViewModel.onRatingRadio(ratingIdToEnum(checkedId))
             }
-            adapter.registerAdapterDataObserver(object: RecyclerView.AdapterDataObserver() {
+            adapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
                 override fun onChanged() {
                 }
+
                 override fun onItemRangeRemoved(positionStart: Int, itemCount: Int) {
                     binding.postList.scrollToPosition(0)
                 }
+
                 override fun onItemRangeMoved(fromPosition: Int, toPosition: Int, itemCount: Int) {
                     binding.postList.scrollToPosition(0)
                 }
+
                 override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
-                    if(positionStart == 0)
+                    if (positionStart == 0)
                         binding.postList.scrollToPosition(0)
                 }
+
                 override fun onItemRangeChanged(positionStart: Int, itemCount: Int) {
                     binding.postList.scrollToPosition(0)
                 }
+
                 override fun onItemRangeChanged(positionStart: Int, itemCount: Int, payload: Any?) {
                     binding.postList.scrollToPosition(0)
                 }
             })
-        })
+        }
     }
 
     private fun sortByIdToEnum(id: Int): SortBy {
