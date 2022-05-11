@@ -83,7 +83,7 @@ class HubFragment : Fragment() {
             }.launchIn(viewLifecycleOwner.lifecycleScope)
 
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.hubProfile.collect { uiState ->
                     when(uiState) {
                         is HubProfileUiState.Error -> Unit

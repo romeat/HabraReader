@@ -84,7 +84,7 @@ class CompanyFragment : Fragment() {
             }.launchIn(viewLifecycleOwner.lifecycleScope)
 
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.companyProfile.collect { uiState ->
                     when(uiState) {
                         is CompanyProfileUiState.Error -> Unit

@@ -84,7 +84,7 @@ class AuthorFragment : Fragment() {
             }.launchIn(viewLifecycleOwner.lifecycleScope)
 
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.authorProfile.collect { uiState ->
                     when(uiState) {
                         is AuthorProfileUiState.Error -> Unit
