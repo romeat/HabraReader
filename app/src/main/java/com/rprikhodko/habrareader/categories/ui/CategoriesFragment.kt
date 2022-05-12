@@ -8,10 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
 import com.rprikhodko.habrareader.R
-import com.rprikhodko.habrareader.categories.AUTHORS_PAGE_INDEX
-import com.rprikhodko.habrareader.categories.COMPANIES_PAGE_INDEX
-import com.rprikhodko.habrareader.categories.CategoriesPagerAdapter
-import com.rprikhodko.habrareader.categories.HUBS_PAGE_INDEX
+import com.rprikhodko.habrareader.categories.adapters.*
 import com.rprikhodko.habrareader.databinding.FragmentCategoriesBinding
 
 class CategoriesFragment : Fragment() {

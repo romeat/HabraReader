@@ -1,4 +1,4 @@
-package com.rprikhodko.habrareader.categories
+package com.rprikhodko.habrareader.categories.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter

@@ -8,9 +8,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
 import com.rprikhodko.habrareader.R
 import com.rprikhodko.habrareader.databinding.FragmentHomeBinding
-import com.rprikhodko.habrareader.home.ARTICLES_PAGE_INDEX
-import com.rprikhodko.habrareader.home.HomePagerAdapter
-import com.rprikhodko.habrareader.home.NEWS_PAGE_INDEX
+import com.rprikhodko.habrareader.home.adapters.*
 import dagger.hilt.android.AndroidEntryPoint
 
 class HomeFragment : Fragment()  {
