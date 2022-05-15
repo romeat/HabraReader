@@ -63,9 +63,7 @@ class NewsFragment : Fragment(){
             .onEach {
                 when(it) {
                     is Event.NavigateToPost -> findNavController().navigate(
-                        R.id.post, bundleOf(ArgNames.POST_ID_ARG_NAME to it.postId))
-                        // for some unknown reason deep link does not work from home navigation stack
-                        //Uri.parse(ArgNames.POST_DEEP_LINK + it.postId))
+                        Uri.parse(ArgNames.POST_DEEP_LINK + it.postId))
                 }
             }.launchIn(viewLifecycleOwner.lifecycleScope)
         return binding.root

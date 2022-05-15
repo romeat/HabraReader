@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/home"
+        android:id="@+id/home_host"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/categories"
+        android:id="@+id/categories_host"
         android:icon="@drawable/ic_baseline_categories_24"
         android:title="@string/title_categories" />
 

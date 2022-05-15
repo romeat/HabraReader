@@ -23,6 +23,7 @@ import com.rprihodko.habrareader.common.Utils.Companion.withHttpsPrefix
 import com.rprihodko.habrareader.common.adapters.PostAdapter
 import com.rprihodko.habrareader.common.dto.CompanyProfile
 import com.rprihodko.habrareader.common.navigation.ArgNames
+import com.rprihodko.habrareader.common.setBackHandlerOnCreate
 import com.rprihodko.habrareader.company.R
 import com.rprihodko.habrareader.company.databinding.FragmentCompanyBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -50,6 +51,11 @@ class CompanyFragment : Fragment() {
 
     private val adapter by lazy(LazyThreadSafetyMode.NONE) {
         PostAdapter(PostAdapter.OnClickListener { post -> viewModel.onPostClick(post) })
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setBackHandlerOnCreate()
     }
 
     override fun onCreateView(

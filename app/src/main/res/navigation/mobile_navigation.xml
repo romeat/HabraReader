@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/home">
+    app:startDestination="@+id/home_host">
 
-    <include app:graph="@navigation/home"/>
-    <include app:graph="@navigation/categories"/>
+    <include app:graph="@navigation/home_host"/>
+    <include app:graph="@navigation/categories_host"/>
     <include app:graph="@navigation/favourites"/>
+
 </navigation>

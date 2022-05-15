@@ -2,18 +2,12 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/categories"
+    android:id="@+id/categories_host"
     app:startDestination="@id/navigation_categories">
-
-    <include app:graph="@navigation/post"/>
-    <include app:graph="@navigation/author"/>
-    <include app:graph="@navigation/hub"/>
-    <include app:graph="@navigation/company"/>
 
     <fragment
         android:id="@+id/navigation_categories"
-        android:name="com.rprikhodko.habrareader.categories.ui.CategoriesFragment"
+        android:name="com.rprikhodko.habrareader.categories.ui.CategoriesHostFragment"
         android:label="@string/title_categories"
-        tools:layout="@layout/fragment_categories" />
-
+        tools:layout="@layout/fragment_categories_host" />
 </navigation>

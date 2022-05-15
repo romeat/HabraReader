@@ -15,6 +15,7 @@ import android.text.style.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.core.view.isVisible
@@ -31,9 +32,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterInside
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
-import com.rprihodko.habrareader.common.QuoteSpanClass
-import com.rprihodko.habrareader.common.R
-import com.rprihodko.habrareader.common.Utils
+import com.rprihodko.habrareader.common.*
 import com.rprihodko.habrareader.common.Utils.Companion.toStringWithThousands
 import com.rprihodko.habrareader.common.Utils.Companion.withHttpsPrefix
 import com.rprihodko.habrareader.common.dto.PostPage
@@ -65,12 +64,20 @@ class PostFragment: Fragment() {
     private var _binding: FragmentPostBinding? = null
     private val binding get() = _binding!!
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setBackHandlerOnCreate()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentPostBinding.inflate(inflater, container, false)
+
+        binding.myToolbar.initDefault(args.postId.toString()) { findNavController().navigateUp() }
+
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 postViewModel.postData.collect { uiState ->

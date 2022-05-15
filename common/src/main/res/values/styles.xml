@@ -67,4 +67,10 @@
     <style name="StatsTextAppearance">
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="DefaultToolbar">
+        <item name="android:background">@color/colorBrand</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/toolbar_layout_height</item>
+    </style>
 </resources>

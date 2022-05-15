@@ -5,13 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/myToolbar"
+        style="@style/DefaultToolbar"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <ImageView
         android:id="@+id/avatar"
         android:layout_width="@dimen/avatar_size_medium"
         android:layout_height="@dimen/avatar_size_medium"
         android:layout_margin="@dimen/margin_4dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/myToolbar" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/avatarBarrier"
@@ -28,7 +33,7 @@
         android:layout_margin="@dimen/margin_4dp"
         app:layout_constraintLeft_toRightOf="@id/avatarBarrier"
         app:layout_constraintRight_toLeftOf="@id/ratingBarrier"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/myToolbar"
         tools:text="1330" />
 
     <TextView
@@ -56,7 +61,7 @@
         android:layout_margin="@dimen/margin_4dp"
         app:layout_constraintLeft_toRightOf="@id/ratingBarrier"
         app:layout_constraintRight_toLeftOf="@id/subsBarrier"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/myToolbar"
         tools:text="12K" />
 
     <TextView
