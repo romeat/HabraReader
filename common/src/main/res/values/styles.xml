@@ -66,6 +66,7 @@
 
     <style name="StatsTextAppearance">
         <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center_vertical</item>
     </style>
 
     <style name="DefaultToolbar">
