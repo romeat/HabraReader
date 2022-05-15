@@ -23,6 +23,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+        freeCompilerArgs = ['-Xjvm-default=enable']
     }
     buildFeatures {
         viewBinding true
@@ -50,8 +51,8 @@ dependencies {
     api 'androidx.constraintlayout:constraintlayout:2.1.2'
     api 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
     api 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
-    api 'androidx.navigation:navigation-fragment-ktx:2.4.0-rc01'
-    api 'androidx.navigation:navigation-ui-ktx:2.4.0-rc01'
+    api 'androidx.navigation:navigation-fragment-ktx:2.5.0-rc01'
+    api 'androidx.navigation:navigation-ui-ktx:2.5.0-rc01'
     api 'androidx.fragment:fragment-ktx:1.4.0'
     api 'androidx.paging:paging-runtime-ktx:3.1.0'
 
