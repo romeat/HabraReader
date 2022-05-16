@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
+import com.rprihodko.habrareader.common.initRootToolbar
 import com.rprikhodko.habrareader.R
 import com.rprikhodko.habrareader.databinding.FragmentHomeBinding
 import com.rprikhodko.habrareader.home.adapters.*
@@ -23,17 +24,16 @@ class HomeFragment : Fragment()  {
     ): View? {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-        val tabLayout = binding.tabLayout
-        val viewPager = binding.pager
 
+        binding.toolbar.initRootToolbar(getString(R.string.title_home))
+        val viewPager = binding.pager
         viewPager.adapter = HomePagerAdapter(this)
 
-        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+        TabLayoutMediator(binding.tabLayout, viewPager) { tab, position ->
             tab.setText(getTabTitle(position))
         }.attach()
 
-        return root
+        return binding.root
     }
 
     override fun onDestroyView() {

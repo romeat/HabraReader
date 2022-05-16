@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.core.text.HtmlCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -22,12 +21,11 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.rprihodko.habrareader.common.Utils.Companion.withHttpsPrefix
 import com.rprihodko.habrareader.common.adapters.PostAdapter
 import com.rprihodko.habrareader.common.dto.CompanyProfile
+import com.rprihodko.habrareader.common.initWithBackButton
 import com.rprihodko.habrareader.common.navigation.ArgNames
 import com.rprihodko.habrareader.common.setBackHandlerOnCreate
-import com.rprihodko.habrareader.company.R
 import com.rprihodko.habrareader.company.databinding.FragmentCompanyBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -64,6 +62,8 @@ class CompanyFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCompanyBinding.inflate(inflater, container, false)
+
+        binding.toolbar.initWithBackButton(args.companyAlias) { findNavController().navigateUp() }
 
         binding.posts.postList.adapter = adapter
 

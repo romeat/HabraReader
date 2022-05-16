@@ -8,14 +8,8 @@
     <color name="colorGreen">#FF7AA600</color>
     <color name="colorRed">#FFD34E4E</color>
     <color name="colorPurple">#FFCD66CD</color>
-    <!--
-    <color name="colorBrand_200">#77C9F2</color>
-    <color name="colorBlack">#000000</color>
-    <color name="colorDarkGrey">#FF121212</color>
--->
 
-    <!--
-    <color name="colorGreyBackground">#FF000000</color>
-    <color name="colorOnPrimary">#FF000000</color>
-    -->
+    <color name="colorToolbarBackground">#FF548EAA</color>
+    <color name="colorToolbarText">#FFFFFFFF</color>
+
 </resources>

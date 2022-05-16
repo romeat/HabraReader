@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
-import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -24,11 +22,10 @@ import com.rprihodko.habrareader.author.databinding.FragmentAuthorBinding
 import com.rprihodko.habrareader.common.Utils.Companion.withHttpsPrefix
 import com.rprihodko.habrareader.common.dto.AuthorProfile
 import com.rprihodko.habrareader.common.adapters.PostAdapter
-import com.rprihodko.habrareader.common.initDefault
+import com.rprihodko.habrareader.common.initWithBackButton
 import com.rprihodko.habrareader.common.navigation.ArgNames
 import com.rprihodko.habrareader.common.setBackHandlerOnCreate
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -66,7 +63,9 @@ class AuthorFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAuthorBinding.inflate(inflater, container, false)
-        binding.myToolbar.initDefault(args.authorAlias) { findNavController().navigateUp() }
+
+        binding.toolbar.initWithBackButton(args.authorAlias) { findNavController().navigateUp() }
+
         binding.posts.postList.adapter = adapter
 
         adapter.addLoadStateListener { state ->

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
+import com.rprihodko.habrareader.common.initRootToolbar
 import com.rprikhodko.habrareader.R
 import com.rprikhodko.habrareader.categories.adapters.*
 import com.rprikhodko.habrareader.databinding.FragmentCategoriesBinding
@@ -21,19 +22,17 @@ class CategoriesFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-
         _binding = FragmentCategoriesBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-        val tabLayout = binding.tabLayout
-        val viewPager = binding.pager
 
+        binding.toolbar.initRootToolbar(getString(R.string.title_categories))
+        val viewPager = binding.pager
         viewPager.adapter = CategoriesPagerAdapter(this)
 
-        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+        TabLayoutMediator(binding.tabLayout, viewPager) { tab, position ->
             tab.setText(getTabTitle(position))
         }.attach()
 
-        return root
+        return binding.root
     }
 
     override fun onDestroyView() {

@@ -3,6 +3,7 @@ package com.rprihodko.habrareader.common
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
 import androidx.lifecycle.ViewModel
@@ -22,11 +23,14 @@ fun ViewModel.launchTryCatch(tryAction: () -> Unit, catchAction: (e: Exception) 
     }
 }
 
-fun Toolbar.initDefault(title: String = "", backAction: () -> Unit) {
+fun Toolbar.initWithBackButton(title: String, backAction: () -> Unit) {
+    this.initRootToolbar(title)
     this.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24)
-    this.setNavigationOnClickListener { view ->
-            backAction.invoke()
-        }
+    this.setNavigationOnClickListener { backAction.invoke() }
+}
+
+fun Toolbar.initRootToolbar(title: String) {
+    this.setTitleTextColor(ContextCompat.getColor(this.context, R.color.colorToolbarText))
     this.title = title
 }
 

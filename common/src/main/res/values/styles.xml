@@ -70,8 +70,10 @@
     </style>
 
     <style name="DefaultToolbar">
-        <item name="android:background">@color/colorBrand</item>
+        <item name="android:background">@color/colorToolbarBackground</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/toolbar_layout_height</item>
+        <item name="android:textColorPrimary">@color/colorToolbarText</item>
+        <item name="android:textColorSecondary">@color/colorToolbarText</item>
     </style>
 </resources>

@@ -1,12 +1,10 @@
 package com.rprihodko.habrareader.hub.ui
 
 import android.net.Uri
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.motion.utils.ViewState
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -22,11 +20,11 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.rprihodko.habrareader.common.Utils.Companion.withHttpsPrefix
 import com.rprihodko.habrareader.common.adapters.PostAdapter
 import com.rprihodko.habrareader.common.dto.HubProfile
+import com.rprihodko.habrareader.common.initWithBackButton
 import com.rprihodko.habrareader.common.navigation.ArgNames
 import com.rprihodko.habrareader.common.setBackHandlerOnCreate
 import com.rprihodko.habrareader.hub.databinding.FragmentHubBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -63,6 +61,8 @@ class HubFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHubBinding.inflate(inflater, container, false)
+
+        binding.toolbar.initWithBackButton(args.hubAlias) { findNavController().navigateUp() }
 
         binding.posts.postList.adapter = adapter
 

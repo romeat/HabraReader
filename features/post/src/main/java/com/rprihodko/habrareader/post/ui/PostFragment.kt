@@ -15,7 +15,6 @@ import android.text.style.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.core.view.isVisible
@@ -27,7 +26,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CenterInside
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.target.CustomTarget
@@ -40,7 +38,6 @@ import com.rprihodko.habrareader.common.navigation.ArgNames
 import com.rprihodko.habrareader.post.databinding.FragmentPostBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.xml.sax.XMLReader
@@ -76,7 +73,7 @@ class PostFragment: Fragment() {
     ): View {
         _binding = FragmentPostBinding.inflate(inflater, container, false)
 
-        binding.myToolbar.initDefault(args.postId.toString()) { findNavController().navigateUp() }
+        binding.toolbar.initWithBackButton(args.postId.toString()) { findNavController().navigateUp() }
 
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {

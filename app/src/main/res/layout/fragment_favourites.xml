@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".favourites.ui.FavouritesFragment">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/DefaultToolbar"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <TextView
         android:id="@+id/text"
         android:layout_width="wrap_content"
@@ -15,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/image"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image"
